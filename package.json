@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/lunaroyster/algolyze/issues"
   },
-  "homepage": "https://github.com/lunaroyster/algolyze#readme"
+  "homepage": "https://github.com/lunaroyster/algolyze#readme",
+  "dependencies": {
+    "tape": "^4.8.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0"
+  }
 }
