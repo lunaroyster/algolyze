@@ -1,0 +1,8 @@
+{
+    "name": "Shortest working name",
+    "longName": "A longer, more descriptive name",
+    "tags": ["", ""],
+    "description": "<Markdown>: A short description that accurately describes the algorithm.",
+    "longDescription": "<Markdown>: A long description that goes in depth about the workings of the algorithm",
+    "links": ["Links to further reading and code samples"]
+}
