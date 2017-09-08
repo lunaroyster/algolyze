@@ -1,4 +1,4 @@
-var algSchemaChecker = require("../lib/algSchemaChecker.js")
+var algSchemaChecker = require("../lib/algSchemaChecker.js");
 
 describe("algorithm schema checker", function() {
     describe("documents", function() {
