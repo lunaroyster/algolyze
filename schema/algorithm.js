@@ -1,28 +1,35 @@
 var algorithm = {
-    "name": {
-        "type": "string"
-    },
-    "longName": {
-        "type": "string"
-    },
-    "tags": {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
+    "id": "/Algorithm",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "longName": {
+            "type": "string",
+            "required": true
+        },
+        "tags": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+            }
+        },
+        "description": {
             "type": "string"
-        }
-    },
-    "description": {
-        "type": "string"
-    },
-    "longDescription": {
-        "type": "string"
-    },
-    "links": {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
+        },
+        "longDescription": {
             "type": "string"
+        },
+        "links": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+            }
         }
     }
 };
