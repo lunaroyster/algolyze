@@ -17,10 +17,11 @@
   },
   "homepage": "https://github.com/lunaroyster/algolyze#readme",
   "dependencies": {
-    "tape": "^4.8.0"
+    "jsonschema": "^1.2.0"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
-    "grunt-contrib-jshint": "^1.1.0"
+    "grunt-contrib-jshint": "^1.1.0",
+    "mocha": "^3.5.0"
   }
 }
