@@ -8,8 +8,7 @@ var algorithm = {
             "required": true
         },
         "longName": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "tags": {
             "type": "array",
@@ -19,7 +18,8 @@ var algorithm = {
             }
         },
         "description": {
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         "longDescription": {
             "type": "string"
