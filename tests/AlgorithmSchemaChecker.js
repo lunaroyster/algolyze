@@ -1,4 +1,18 @@
-var algSchemaChecker = require("../lib/algSchemaChecker.js");
+const assert = require('assert');
+var AlgorithmSchemaChecker = require("../lib/AlgorithmSchemaChecker.js");
+
+var generators = require("./generators");
+var AlgorithmGenerator = generators.AlgorithmGenerator;
+
+var testAlgorithm = function(algorithm) {
+    var _testAlgorithm = function(algorithm, result) {
+        return assert(AlgorithmSchemaChecker.check(algorithm)==result);
+    };
+    var response = {};
+    response.success = ()=>{return _testAlgorithm(algorithm, true)};
+    response.fail = ()=>{return _testAlgorithm(algorithm, false)};
+    return response;
+};
 
 describe("algorithm schema checker", function() {
     describe("documents", function() {
@@ -10,7 +24,6 @@ describe("algorithm schema checker", function() {
     describe("algorithm fields", function() {
         describe("name", function() {
             it("ensures correct name length");
-            it("ensures names are unique");
             it("ensures algorithms have name");
         });
         describe("longName", function() {
