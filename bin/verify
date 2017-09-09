@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const Q = require('q');
+const fs = require('fs');
+
+const AlgorithmSchemaChecker = require('../lib/AlgorithmSchemaChecker');
+const algorithmDirectory = './algorithms';
+
+
+Q.fcall(function() {
+    //Individual algorithm check
+    let algorithmFileList = fs.readdirSync(algorithmDirectory);
+    let algorithmObjects = [];
+    for(let algorithmFileName of algorithmFileList) {
+        let filePath = `${algorithmDirectory}/${algorithmFileName}`;
+        algorithmObjects.push(JSON.parse(fs.readFileSync(filePath, 'utf8')));
+    }
+    for(let algorithmObject of algorithmObjects) {
+        AlgorithmSchemaChecker.assertCheck(algorithmObject);
+    }
+})
+.then(function() {
+    //Algorithm group check
+})
+.then(function() {
+    //Further processing
+})
+.catch(function(error) {
+    console.log(error);
+});
+

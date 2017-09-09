@@ -4,7 +4,8 @@
   "description": "A searchable database of algorithms",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover ./bin/test"
+    "test": "istanbul cover ./bin/test",
+    "verify": "node ./bin/verify"
   },
   "repository": {
     "type": "git",
