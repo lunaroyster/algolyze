@@ -4,7 +4,7 @@
   "description": "A searchable database of algorithms",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "istanbul cover ./bin/test"
   },
   "repository": {
     "type": "git",
@@ -17,11 +17,13 @@
   },
   "homepage": "https://github.com/lunaroyster/algolyze#readme",
   "dependencies": {
-    "jsonschema": "^1.2.0"
+    "jsonschema": "^1.2.0",
+    "q": "^1.5.0"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.1.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
     "seedrandom": "^2.4.3"
   }
