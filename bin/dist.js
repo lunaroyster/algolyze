@@ -10,16 +10,20 @@ Q.fcall(function() {
         return fse.emptyDir(dir);
     })
     .then(()=> {
+        console.log("Moving static assets to distribution");
         return fse.copy('./frontend/static', `${dir}`, {overwrite: false});
     })
     .then(()=> {
+        console.log("Moving generated assets to distribution");
         return fse.copy('./frontend/generated', `${dir}`, {overwrite: false});
     })
     .then(()=> {
+        console.log("Copying all algorithms to distribution");
         return fse.copy('./algorithms', `${dir}/algorithms/all`, {overwrite: false});
     })
     .then(()=> {
         //Compiles all algorithms into one.
+        console.log("Generating a compiled file of algorithms");
         return fse.readdir('./algorithms')
         .then((algorithmFileList)=> {
             let algorithmObjects = [];
