@@ -1,5 +1,5 @@
 const fse = require('fs-extra');
 
-fse.ensureDirSync('./frontend/generated');
+fse.emptyDirSync('./frontend/generated');
 
 require('./compileless');

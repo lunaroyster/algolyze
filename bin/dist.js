@@ -6,10 +6,18 @@ const fse = require('fs-extra');
 Q.fcall(function() {
     require('../frontend/index');
     let dir = './dist';
-    fse.emptyDirSync(dir);
-    fse.copySync('./frontend/static', `${dir}`);
-    fse.copySync('./frontend/generated', `${dir}`);
-    fse.copySync('./algorithms', `${dir}/algorithms/all`, {overwrite: true});
+    return Q.fcall(function() {
+        return fse.emptyDir(dir);
+    })
+    .then(()=> {
+        return fse.copy('./frontend/static', `${dir}`, {overwrite: false});
+    })
+    .then(()=> {
+        return fse.copy('./frontend/generated', `${dir}`, {overwrite: false});
+    })
+    .then(()=> {
+        return fse.copy('./algorithms', `${dir}/algorithms/all`, {overwrite: false});
+    });
 })
 .catch(function(error) {
     console.error(error);

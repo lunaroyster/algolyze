@@ -12,7 +12,7 @@ var render = ()=> {
     var lessFolder = __dirname + "/less/";
     var outFolder = __dirname + "/generated/css/";
     return Q.fcall(()=> {
-        return fse.readdirSync(lessFolder);
+        return fse.readdir(lessFolder);
     })
     .then((lessFiles)=> {
         var filePromises = [];
@@ -21,12 +21,7 @@ var render = ()=> {
             var lessFile = lessFiles[lF];
             var filePromise = less.render(fse.readFileSync(lessFolder + lessFile).toString())
             .then((output)=> {
-                var deferred = Q.defer();
-                fse.writeFile(outFolder+toCSS(lessFile), output.css, {flag:'w'}, (error, output)=> {
-                    deferred.resolve();
-                    return;
-                });
-                return deferred.promise;
+                return fse.writeFile(outFolder+toCSS(lessFile), output.css, {flag:'w'});
             });
             filePromises.push(filePromise);
         }
