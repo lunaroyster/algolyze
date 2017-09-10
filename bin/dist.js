@@ -17,6 +17,20 @@ Q.fcall(function() {
     })
     .then(()=> {
         return fse.copy('./algorithms', `${dir}/algorithms/all`, {overwrite: false});
+    })
+    .then(()=> {
+        //Compiles all algorithms into one.
+        return fse.readdir('./algorithms')
+        .then((algorithmFileList)=> {
+            let algorithmObjects = [];
+            algorithmFileList.forEach((algorithmFile)=> {
+                algorithmObjects.push(fse.readJsonSync(`./algorithms/${algorithmFile}`));
+            });
+            return algorithmObjects;
+        })
+        .then((algorithmObjects)=> {
+            return fse.writeJson(`${dir}/algorithms/compiled.json`, algorithmObjects);
+        });
     });
 })
 .catch(function(error) {
