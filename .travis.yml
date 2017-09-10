@@ -1,20 +1,21 @@
 language: node_js
 node_js:
   - "8"
-jobs:
-    include:
-        stage: test
-        script: bin/test.js
-        stage: verify
-        script: bin/verify.js
-        stage: build distribution
-        script: bin/dist.js
-        stage: deploy
-        script: skip
-        deploy:
-            provider: pages
-            skip_cleanup: true
-            github_token: $GITHUB_TOKEN
-            local_dir: dist/
-            on:
-                branch: master
+
+install:
+  -  npm install
+  
+script:
+  -  npm run dist
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: dist/
+    on:
+        branch: master
+        
+branches:
+  only:
+  - master
