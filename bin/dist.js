@@ -4,7 +4,7 @@ const Q = require('q');
 const fse = require('fs-extra');
 
 Q.fcall(function() {
-    require('../frontend/index')
+    require('../frontend/index');
     let dir = './dist';
     fse.emptyDirSync(dir);
     fse.copySync('./frontend/static', `${dir}`);
