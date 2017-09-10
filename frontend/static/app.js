@@ -21,5 +21,5 @@ app.controller('homeController', function($scope) {
 });
 
 app.controller('searchController', function($scope) {
-    
+    $scope.results = [];
 });

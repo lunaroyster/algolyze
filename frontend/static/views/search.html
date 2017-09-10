@@ -1,3 +1,14 @@
 <div id="searchView">
-    
+    <div id="searchBar">
+        <input type="text" name="search" ng-model="searchTerm"/>
+    </div>
+    <div id="resultsBar">
+        <div class="results">
+            <div class="result" ng-repeat="result in results">
+                <div class="name" ng-bind="result.name"></div>
+                <div class="longName" ng-bind="result.longName"></div>
+                <div class="description" ng-bind="result.description"></div>
+            </div>
+        </div>
+    </div>
 </div>
