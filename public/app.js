@@ -12,6 +12,10 @@ app.config(['$routeProvider', function($routeProvider) {
     
 }]);
 
+app.service('dataService', function($http) {
+    
+});
+
 app.controller('homeController', function($scope) {
     
 });
