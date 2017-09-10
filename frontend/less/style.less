@@ -8,6 +8,12 @@ body {
     font-weight: 100;
 }
 
+.flexCenter() {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
 #searchView {
     #searchBar {
         height: 50%;
@@ -15,9 +21,7 @@ body {
         top: 0;
         background-color: #111;
         
-        align-items: center;
-        justify-content: center;
-        display: flex;
+        .flexCenter;
         
         input[type="text"] {
             outline: none;
@@ -27,6 +31,28 @@ body {
             background: #333;
             width: 75%;
             color: #fff;
+        }
+    }
+    #resultsBar {
+        .flexCenter;
+        .results {
+            width: 75%;
+            margin-top: 1em;
+            .result {
+                margin-top: 1em;
+                border: 1px solid #333;
+                padding: 1em;
+                box-sizing: border-box;
+                .name {
+                    font-size: 1.5em;
+                }
+                .longName {
+                    color: #757575;
+                }
+                .description {
+                    color: #a9a9a9;
+                }
+            }
         }
     }
 }
