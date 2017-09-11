@@ -1,0 +1,6 @@
+{
+    "name": "Bubble Sort",
+    "longName": "Bubble Sort/Sinking Sort",
+    "tags": ["sorting", "comparision"],
+    "description": "Bubblesort steps through an array comparing adjacent items, and swaps them if they are in the wrong order. It does this repeatedly until the array is sorted."
+}
