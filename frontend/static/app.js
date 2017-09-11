@@ -47,9 +47,9 @@ app.factory('algorithmService', function(dataService, $q) {
             includeMatches: true,
             threshold: 0.6,
             location: 0,
-            distance: 100,
+            distance: 50,
             maxPatternLength: 32,
-            minMatchCharLength: 2,
+            minMatchCharLength: 4,
             keys: [
                 "name",
                 "longName",
@@ -66,7 +66,6 @@ app.factory('algorithmService', function(dataService, $q) {
     initialize();
     
     var fuzzySearch = function(term) {
-        console.log(algorithmService.fuse);
         return algorithmService.fuse.search(term);
     };
     
