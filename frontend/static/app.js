@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular Fuse */
 
 var app = angular.module("algolyze", ['ngRoute']);
 
@@ -24,6 +24,7 @@ app.service('dataService', function($http) {
 app.factory('algorithmService', function(dataService, $q) {
     var algorithmService = {};
     var algorithmList = undefined;
+    
     var getAlgorithms = function() {
         return $q((resolve, reject) => {resolve()})
         .then(()=> {
@@ -37,7 +38,40 @@ app.factory('algorithmService', function(dataService, $q) {
             return algorithmList;
         });
     };
+    
+    var initialize = ()=> {
+        var fuseOptions = {
+            shouldSort: true,
+            findAllMatches: true,
+            includeScore: true,
+            includeMatches: true,
+            threshold: 0.6,
+            location: 0,
+            distance: 100,
+            maxPatternLength: 32,
+            minMatchCharLength: 2,
+            keys: [
+                "name",
+                "longName",
+                "tags",
+                "description"
+            ]
+        };
+        getAlgorithms()
+        .then((algorithmList)=> {
+            var fuse = new Fuse(algorithmList, fuseOptions);
+            algorithmService.fuse = fuse;
+        });
+    };
+    initialize();
+    
+    var fuzzySearch = function(term) {
+        console.log(algorithmService.fuse);
+        return algorithmService.fuse.search(term);
+    };
+    
     algorithmService.getAlgorithms = getAlgorithms;
+    algorithmService.fuzzySearch = fuzzySearch;
     return algorithmService;
 });
 
@@ -46,12 +80,17 @@ app.controller('homeController', function($scope, dataService) {
 });
 
 app.controller('searchController', function($scope, algorithmService) {
-    $scope.results = [];
     $scope.initialize = ()=> {
-        algorithmService.getAlgorithms()
-        .then((algorithmList)=> {
-            $scope.results = algorithmList;
-        });
+        
     };
     $scope.initialize();
+    
+    
+    $scope.results = ()=> {
+        var algorithms = [];
+        for(var result of algorithmService.fuzzySearch($scope.searchTerm)) {
+            algorithms.push(result.item);
+        }
+        return algorithms;
+    };
 });
