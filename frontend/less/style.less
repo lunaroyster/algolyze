@@ -12,7 +12,6 @@ body {
     background: #333333;
 }
 
-
 * {
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
@@ -50,9 +49,13 @@ body {
             margin-top: 1em;
             .result {
                 margin-top: 1em;
-                border: 1px solid #333;
+                // border: 1px solid #333;
                 padding: 1em;
                 box-sizing: border-box;
+                transition: 0.2s;
+                > * {
+                    transition: 0.2s;
+                }
                 .name {
                     font-size: 1.5em;
                 }
@@ -61,6 +64,12 @@ body {
                 }
                 .description {
                     color: #a9a9a9;
+                }
+                &:hover {
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    .description {
+                        color: #757575;
+                    }
                 }
             }
         }
