@@ -1,8 +1,0 @@
-{
-    "name": "Shortest working name",
-    "longName": "A longer, more descriptive name",
-    "tags": ["tag1", "tag2"],
-    "description": "<Markdown>: A short description that accurately describes the algorithm.",
-    "longDescription": "<Markdown>: A long description that goes **in depth** about __the workings__ of the _algorithm_.  \nIncluding new lines.\n\nAnd paragraphs.\n\n#And new sections.\n\n[and links](https://example.org)\n\n* and lists  \n* with multiple points",
-    "links": ["Links to further reading and code samples"]
-}
