@@ -2,5 +2,6 @@
     "name": "Insertion Sort",
     "longName": "Insertion sort",
     "tags": ["sorting", "insertion"],
-    "description": "Insertion sort builds a sorted array inserting items into the right location one at a time."
+    "description": "Insertion sort builds a sorted array inserting items into the right location one at a time.",
+    "longDescription": "Insertion Sort builds the final sorted array one item at a time. \n\nInsertion Sort iterates through a list, consuming one element each repetition, and **inserts** it into a growing sorted list.\n\nIn the worst case scenario (when the list is in a reverse sorted order), Insertion Sort iterates n^2 times for a list with n items. Its performance is quite good, however, in nearly sorted lists.\n\n## Pseudocode\n\n    function insertionSortArray(Array)\n        i = 1\n        while i < length(Array)\n            j = 1\n            while(j > 0 AND Array[j-1] > Array[j])\n                swap Array[j] and Array[j-1]\n                j = j - 1\n            end while\n            i++\n        end while\n        return Array\n    end function\n"
 }
