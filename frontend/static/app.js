@@ -1,4 +1,4 @@
-/* global angular Fuse */
+/* global angular Fuse markdown */
 
 var app = angular.module("algolyze", ['ngRoute']);
 
@@ -23,6 +23,16 @@ app.service('dataService', function($http) {
         .then((response)=> {
             return response.data;
         });
+    };
+});
+
+app.service('markdownService', function($sce) {
+    var toHTML = function(markdownText) {
+        return markdown.toHTML(markdownText);
+    };
+    this.returnMarkdownAsTrustedHTML = function(markdown) {
+        if(!markdown) return;
+        return $sce.trustAsHtml(toHTML(markdown));
     };
 });
 
@@ -111,7 +121,7 @@ app.controller('searchController', function($scope, algorithmService, $location)
     };
 });
 
-app.controller('algorithmController', function($scope, algorithmService, $location, $routeParams) {
+app.controller('algorithmController', function($scope, algorithmService, $location, $routeParams, markdownService) {
     $scope.initialize = ()=> {
         algorithmService.getAlgorithm($routeParams.algorithm)
         .then((algorithm)=> {
@@ -119,4 +129,7 @@ app.controller('algorithmController', function($scope, algorithmService, $locati
         });
     };
     $scope.initialize();
+    
+    $scope.longDescriptionAsHTML = markdownService.returnMarkdownAsTrustedHTML;
+    
 });
