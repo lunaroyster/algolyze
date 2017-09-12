@@ -2,7 +2,7 @@
 
 var app = angular.module("algolyze", ['ngRoute']);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
     
     .when('/', {
@@ -10,11 +10,20 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl : './views/search.html'
     })
     
-    .when('/:algorithm', {
+    .when('/a/:algorithm', {
         controller  : 'algorithmController',
         templateUrl : './views/algorithm.html'
+    })
+    
+    .otherwise({
+        controller  : '404Controller',
+        templateUrl : './views/404.html'
     });
     
+    // $locationProvider.html5Mode({
+    //     enabled: true,
+    //     requireBase: true
+    // });
 }]);
 
 app.service('dataService', function($http) {
@@ -109,7 +118,7 @@ app.controller('searchController', function($scope, algorithmService, $location)
     $scope.initialize();
     
     $scope.viewAlgorithm = (algorithm)=> {
-        $location.path(`/${algorithm.name}`);
+        $location.path(`/a/${algorithm.name}`);
     };
     
     $scope.results = ()=> {
@@ -131,5 +140,9 @@ app.controller('algorithmController', function($scope, algorithmService, $locati
     $scope.initialize();
     
     $scope.longDescriptionAsHTML = markdownService.returnMarkdownAsTrustedHTML;
+    
+});
+
+app.controller('404Controller', function() {
     
 });
