@@ -1,4 +1,4 @@
-/* global angular Fuse */
+/* global angular Fuse markdown */
 
 var app = angular.module("algolyze", ['ngRoute']);
 
@@ -8,6 +8,11 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/', {
         controller  : 'searchController',
         templateUrl : './views/search.html'
+    })
+    
+    .when('/:algorithm', {
+        controller  : 'algorithmController',
+        templateUrl : './views/algorithm.html'
     });
     
 }]);
@@ -18,6 +23,16 @@ app.service('dataService', function($http) {
         .then((response)=> {
             return response.data;
         });
+    };
+});
+
+app.service('markdownService', function($sce) {
+    var toHTML = function(markdownText) {
+        return markdown.toHTML(markdownText);
+    };
+    this.returnMarkdownAsTrustedHTML = function(markdown) {
+        if(!markdown) return;
+        return $sce.trustAsHtml(toHTML(markdown));
     };
 });
 
@@ -36,6 +51,14 @@ app.factory('algorithmService', function(dataService, $q) {
         })
         .then(()=> {
             return algorithmList;
+        });
+    };
+    
+    var getAlgorithm = function(name) {
+        return getAlgorithms()
+        .then((algorithms)=> {
+            console.log(algorithms);
+            return algorithms.filter((item)=>{return item.name==name})[0];
         });
     };
     
@@ -70,6 +93,7 @@ app.factory('algorithmService', function(dataService, $q) {
     };
     
     algorithmService.getAlgorithms = getAlgorithms;
+    algorithmService.getAlgorithm = getAlgorithm;
     algorithmService.fuzzySearch = fuzzySearch;
     return algorithmService;
 });
@@ -78,12 +102,15 @@ app.controller('homeController', function($scope, dataService) {
     
 });
 
-app.controller('searchController', function($scope, algorithmService) {
+app.controller('searchController', function($scope, algorithmService, $location) {
     $scope.initialize = ()=> {
         
     };
     $scope.initialize();
     
+    // $scope.viewAlgorithm = (algorithm)=> {
+    //     $location.path(`/${algorithm.name}`);
+    // };
     
     $scope.results = ()=> {
         var algorithms = [];
@@ -92,4 +119,17 @@ app.controller('searchController', function($scope, algorithmService) {
         }
         return algorithms;
     };
+});
+
+app.controller('algorithmController', function($scope, algorithmService, $location, $routeParams, markdownService) {
+    $scope.initialize = ()=> {
+        algorithmService.getAlgorithm($routeParams.algorithm)
+        .then((algorithm)=> {
+            $scope.algorithm = algorithm;
+        });
+    };
+    $scope.initialize();
+    
+    $scope.longDescriptionAsHTML = markdownService.returnMarkdownAsTrustedHTML;
+    
 });
