@@ -108,9 +108,9 @@ app.controller('searchController', function($scope, algorithmService, $location)
     };
     $scope.initialize();
     
-    // $scope.viewAlgorithm = (algorithm)=> {
-    //     $location.path(`/${algorithm.name}`);
-    // };
+    $scope.viewAlgorithm = (algorithm)=> {
+        $location.path(`/${algorithm.name}`);
+    };
     
     $scope.results = ()=> {
         var algorithms = [];
