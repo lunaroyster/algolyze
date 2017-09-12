@@ -4,7 +4,7 @@
     </div>
     <div id="resultsBar">
         <div class="results">
-            <div class="result" ng-repeat="result in results()">
+            <div class="result" ng-repeat="result in results()" ng-click="viewAlgorithm(result)">
                 <div class="name" ng-bind="result.name"></div>
                 <div class="longName" ng-bind="result.longName"></div>
                 <div class="description" ng-bind="result.description"></div>
