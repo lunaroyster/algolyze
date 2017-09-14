@@ -1,5 +1,6 @@
 const fse = require('fs-extra');
 
-fse.emptyDirSync('./frontend/generated');
-
-require('./compileless');
+module.exports = (async function() {
+    await fse.emptyDirSync('./frontend/generated');
+    await require('./compileless');
+})();
