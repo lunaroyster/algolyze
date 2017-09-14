@@ -7,7 +7,7 @@ function toCSS(lessFileName) {
     return lessFileName.replace(".less", ".css");
 }
 
-var render = ()=> {
+var render = async ()=> {
     console.log("Compiling LESS files");
     var lessFolder = __dirname + "/less/";
     var outFolder = __dirname + "/generated/css/";
@@ -31,4 +31,5 @@ var render = ()=> {
         console.log("Compiled LESS files");
     });
 };
-render();
+
+module.exports = render();
