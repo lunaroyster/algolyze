@@ -143,6 +143,6 @@ app.controller('algorithmController', function($scope, algorithmService, $locati
     
 });
 
-app.controller('404Controller', function() {
-    
+app.controller('404Controller', function($location) {
+    $location.path('/');
 });
