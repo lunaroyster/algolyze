@@ -24,25 +24,32 @@ body {
 }
 
 #searchView {
-    #searchBar {
+    #searchPanel {
+        * {
+            color: #ffffff;
+        }
         height: 50%;
         width: 100%;
         top: 0;
         background-color: #111;
-        
-        .flexCenter;
-        
-        input[type="text"] {
-            outline: none;
-            border: none;
-            font-size: xx-large;
-            padding: 0.5em;
-            background: #333;
+        display: flex;
+        #contentBar {
             width: 75%;
-            color: #fff;
+            margin: auto;
+            h1 {
+                text-align: center;
+            }
+            input[type="text"] {
+                outline: none;
+                border: none;
+                font-size: xx-large;
+                padding: 0.5em;
+                background: #333;
+                width: 100%;
+            }
         }
     }
-    #resultsBar {
+    #resultsPanel {
         .flexCenter;
         .results {
             width: 75%;
