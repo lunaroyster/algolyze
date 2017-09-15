@@ -1,15 +1,37 @@
+@dark: #111111;
+@d0: @dark;
+@d1: lighten(@dark, 5%);
+@d2: lighten(@dark, 10%);
+@d3: lighten(@dark, 15%);
+@d4: lighten(@dark, 20%);
+@d5: lighten(@dark, 25%);
+@d6: lighten(@dark, 30%);
+@d7: lighten(@dark, 35%);
+
+@light: #eeeeee;
+@l0: @light;
+@l1: darken(@light, 5%);
+@l2: darken(@light, 10%);
+@l3: darken(@light, 15%);
+@l4: darken(@light, 20%);
+@l5: darken(@light, 25%);
+@l6: darken(@light, 30%);
+@l7: darken(@light, 35%);
+
+@highlight: #009688;
+
 body {
-    background-color: #eeeeee;
+    background-color: @l0;
     margin: 0;
     overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {
-    background: #111111;
+    background: @d0;
     width: 0.5em;
 }
 ::-webkit-scrollbar-thumb {
-    background: #333333;
+    background: @d2;
 }
 
 * {
@@ -26,12 +48,12 @@ body {
 #searchView {
     #searchPanel {
         * {
-            color: #ffffff;
+            color: @l0;
         }
         height: 50%;
         width: 100%;
         top: 0;
-        background-color: #111;
+        background-color: @d0;
         display: flex;
         #contentBar {
             width: 75%;
@@ -44,7 +66,7 @@ body {
                 border: none;
                 font-size: xx-large;
                 padding: 0.5em;
-                background: #333;
+                background: @d2;
                 width: 100%;
             }
         }
@@ -68,15 +90,15 @@ body {
                     font-size: 1.5em;
                 }
                 .longName {
-                    color: #757575;
+                    color: @d7;
                 }
                 .description {
-                    color: #a9a9a9;
+                    color: @l5;
                 }
                 &:hover {
                     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                     .description {
-                        color: #757575;
+                        color: @d7;
                     }
                 }
             }
@@ -92,13 +114,13 @@ body {
         }
     }
     .header {
-        background: #111111;
+        background: @d0;
         width: 100%;
         padding-bottom: 2em;
         .name {
             padding: 20px;
             padding-bottom: 10px;
-            color: #fff;
+            color: @l0;
             font-size: xx-large;
             font-weight: 100;
         }
@@ -112,7 +134,7 @@ body {
             color: white;
             font-size: larger;
             font-family: 'Open Sans';
-            background: #333333;
+            background: @d2;
         }
     }
 }
@@ -129,11 +151,11 @@ body {
     }
     a {
         text-decoration: none;
-        color: #009688;
+        color: @highlight;
     }
     code {
         display: block;
-        background: #e2e2e2;
+        background: @l1;
         font-family: consolas;
         font-weight: 100;
         padding: 1em 3em 1em 3em;
