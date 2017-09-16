@@ -1,0 +1,6 @@
+{
+    "name": "Shell Sort",
+    "longName": "Shell Sort (Bubble Sort) | Shell's method",
+    "tags": ["sorting", "comparision", "bubble", "insertion"],
+    "description": "Shell Sort improves upon bubble sort and insertion sort by moving out of order elements more than one position at a time. It's quick at sorting mostly arranged lists."
+}

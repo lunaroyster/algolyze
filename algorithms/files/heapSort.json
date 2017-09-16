@@ -1,0 +1,6 @@
+{
+    "name": "Heapsort",
+    "longName": "Heapsort",
+    "tags": ["sorting", "selection", "in-place", "heap"],
+    "description": "Heapsort divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element and moving that to the sorted region. It's an improvement over Selection Sort, using heaps in the process."
+}

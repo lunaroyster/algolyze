@@ -1,0 +1,7 @@
+{
+    "name": "Merge Sort",
+    "longName": "Merge Sort",
+    "tags": ["sorting", "comparision", "recursive"],
+    "description": "Merge sort takes advantage of the ease of merging already sorted lists into a new sorted list. It starts by comparing every two elements, swapping them if they are in the wrong order. It then merges the lists of two into lists of four, and so on.",
+    "links": ["https://en.wikipedia.org/wiki/Merge_sort"]
+}
