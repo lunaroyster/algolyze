@@ -111,7 +111,7 @@ app.controller('homeController', function($scope, dataService) {
     
 });
 
-app.controller('searchController', function($scope, algorithmService, $location) {
+app.controller('searchController', function($scope, algorithmService, $location, $sce) {
     $scope.initialize = ()=> {
         
     };
@@ -121,13 +121,25 @@ app.controller('searchController', function($scope, algorithmService, $location)
         $location.path(`/a/${algorithm.name}`);
     };
     
-    $scope.results = ()=> {
-        var algorithms = [];
-        for(var result of algorithmService.fuzzySearch($scope.searchTerm)) {
-            algorithms.push(result.item);
-        }
-        return algorithms;
+    $scope.searchTermChange = (searchTerm)=> {
+        $scope.results = algorithmService.fuzzySearch(searchTerm);
+        // console.log($scope.results);
     };
+    
+    $scope.fieldAsHTML = (result, fieldName)=> {
+        var field = result.item[fieldName];
+        // console.log(result.matches);
+        var fieldMatch = result.matches.find((match)=>{return match.key==fieldName});
+        if(fieldMatch) {
+            var indices = fieldMatch.indices;
+            for (var indice of indices) {
+                console.log(indice);
+                field = [field.slice(0, indice[0]), "<strong>", field.slice(indice[0], indice[1]+1), "</strong>", field.slice(indice[1]+1)].join("");
+            }
+        }
+        return $sce.trustAsHtml(field);
+    };
+    
 });
 
 app.controller('algorithmController', function($scope, algorithmService, $location, $routeParams, markdownService) {
