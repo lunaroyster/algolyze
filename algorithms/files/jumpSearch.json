@@ -1,0 +1,6 @@
+{
+    "name": "Jump Search",
+    "longName": "Jump Search | Block Search",
+    "tags": ["search", "jump", "block", "sorted"],
+    "description": "Jump search 'jumps' a fixed number of steps through a sorted array, and compares the term it lands on to the search term. If it finds an element lower than the search term, it performs a search in the sublist."
+}

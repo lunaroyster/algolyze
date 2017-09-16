@@ -1,0 +1,6 @@
+{
+    "name": "Interpolation Search",
+    "longName": "Interpolation Search",
+    "tags": ["search", "sorted search"],
+    "description": "Interpolation search uses the value of the target item to make a guess about its position in the array, and then searching nearby. It works well when the array is evenly distributed."
+}
