@@ -2,5 +2,6 @@
     "name": "Insertion Sort",
     "longName": "Insertion sort",
     "tags": ["sorting", "insertion"],
-    "description": "Insertion sort builds a sorted array inserting items into the right location one at a time."
+    "description": "Insertion sort builds a sorted array inserting items into the right location one at a time.",
+    "links": ["https://en.wikipedia.org/wiki/Insertion_sort"]
 }
