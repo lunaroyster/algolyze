@@ -11,8 +11,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     })
     
     .when('/a/:algorithm', {
-        controller  : 'algorithmController',
-        templateUrl : './views/algorithm.html'
+        controller  : 'algorithmPageController',
+        templateUrl : './views/algorithmPage.html'
     })
     
     .otherwise({
@@ -130,7 +130,7 @@ app.controller('searchController', function($scope, algorithmService, $location)
     };
 });
 
-app.controller('algorithmController', function($scope, algorithmService, $location, $routeParams, markdownService) {
+app.controller('algorithmPageController', function($scope, algorithmService, $location, $routeParams, markdownService) {
     $scope.initialize = ()=> {
         algorithmService.getAlgorithm($routeParams.algorithm)
         .then((algorithm)=> {
@@ -138,6 +138,8 @@ app.controller('algorithmController', function($scope, algorithmService, $locati
         });
     };
     $scope.initialize();
+    
+    $scope.noPageMarkdown = "##This algorithm doesn't seem to have a page. \n\nCreate a page.";
     
     $scope.longDescriptionAsHTML = markdownService.returnMarkdownAsTrustedHTML;
     
