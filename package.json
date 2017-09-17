@@ -2,7 +2,7 @@
   "name": "algolyze",
   "version": "0.0.0",
   "description": "A searchable database of algorithms",
-  "main": "index.js",
+  "main": "./bin/dist.js",
   "scripts": {
     "test": "istanbul cover ./bin/test.js",
     "verify": "node ./bin/verify.js",
