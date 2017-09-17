@@ -3,7 +3,9 @@
         <div class="container">
             <div class="name" ng-bind="algorithm.name"></div>
             <div class="longName" ng-bind="algorithm.longName"></div>
-            <!--<div class="tags" ng-bind="algorithm.tags"></div>-->
+            <div class="tags">
+                <span class="tag" ng-repeat="tag in algorithm.tags" ng-bind="tag"></span>
+            </div>
             <div class="description" ng-bind="algorithm.description"></div>
         </div>
     </div>

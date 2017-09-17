@@ -45,6 +45,15 @@ body {
     display: flex;
 }
 
+.tag() {
+    padding: 0.5em;
+    margin-right: 10px;
+    display: inline-flex;
+    font-size: 80%;
+    align-items: center;
+    font-weight: 100;
+}
+
 #searchView {
     #searchPanel {
         * {
@@ -93,13 +102,8 @@ body {
                     color: @d7;
                 }
                 .tag {
-                    padding: 0.5em;
-                    margin-right: 10px;
+                    .tag();
                     background: @l1;
-                    display: inline-flex;
-                    font-size: 0.8em;
-                    align-items: center;
-                    font-weight: 100;
                     color: @l7;
                 }
                 .description {
@@ -110,6 +114,9 @@ body {
                     .description {
                         color: @d7;
                     }
+                }
+                &:focus {
+                    outline: auto;
                 }
             }
         }
@@ -138,6 +145,15 @@ body {
             color: grey;
             padding-left: 20px;
             padding-bottom: 20px;
+        }
+        .tags {
+            padding-bottom: 1em;
+            padding-left: 20px;
+            .tag {
+                .tag();
+                background: @d1;
+                color: @l7;
+            }
         }
         .description {
             padding: 1em;
