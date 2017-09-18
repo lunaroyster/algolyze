@@ -77,16 +77,26 @@ app.factory('algorithmService', function(dataService, $q) {
             findAllMatches: true,
             includeScore: true,
             includeMatches: true,
-            threshold: 0.6,
-            location: 0,
-            distance: 50,
+            threshold: 0.5,
             maxPatternLength: 32,
             minMatchCharLength: 4,
             keys: [
-                "name",
-                "longName",
-                "tags",
-                "description"
+                {
+                    "name": "name",
+                    "weight": 1
+                },
+                {
+                    "name": "longName",
+                    "weight": 1
+                },
+                {
+                    "name": "tags",
+                    "weight": 0.4
+                },
+                {
+                    "name": "description",
+                    "weight": 0.1
+                }
             ]
         };
         getAlgorithms()
