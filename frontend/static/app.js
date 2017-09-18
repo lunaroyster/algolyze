@@ -131,13 +131,17 @@ app.controller('searchController', function($scope, algorithmService, $location)
         $location.path(`/a/${algorithm.name}`);
     };
     
-    $scope.results = ()=> {
-        var algorithms = [];
-        for(var result of algorithmService.fuzzySearch($scope.searchTerm)) {
-            algorithms.push(result.item);
-        }
-        return algorithms;
-    };
+    $scope.searchTermChange = (searchTerm)=> { 
+        $scope.results = algorithmService.fuzzySearch(searchTerm); 
+    }; 
+    
+    // $scope.results = ()=> {
+    //     var algorithms = [];
+    //     for(var result of algorithmService.fuzzySearch($scope.searchTerm)) {
+    //         algorithms.push(result.item);
+    //     }
+    //     return algorithms;
+    // };
 });
 
 app.controller('algorithmPageController', function($scope, algorithmService, $location, $routeParams, markdownService) {
