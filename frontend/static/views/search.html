@@ -2,16 +2,16 @@
     <div id="searchPanel">
         <div id="contentBar">
             <h1>algolyze</h1>
-            <input type="text" name="search" ng-model="searchTerm" ng-change="searchTermChange()"/>
+            <input type="text" name="search" ng-model="searchTerm" ng-change="searchTermChange(searchTerm)"/>
         </div>
     </div>
     <div id="resultsPanel">
         <div class="results">
-            <div class="result" role="button" ng-repeat="result in results()" ng-click="viewAlgorithm(result)" tabindex=0>
-                <div class="name" ng-bind="result.name"></div>
-                <div class="longName" ng-bind="result.longName"></div>
-                <span class="tag" ng-repeat="tag in result.tags" ng-bind="tag"></span>
-                <div class="description" ng-bind="result.description"></div>
+            <div class="result" role="button" ng-repeat="result in results" ng-click="viewAlgorithm(result)" tabindex=0>
+                <div class="name" ng-bind="result.item.name"></div>
+                <div class="longName" ng-bind="result.item.longName"></div>
+                <span class="tag" ng-repeat="tag in result.item.tags" ng-bind="tag"></span>
+                <div class="description" ng-bind="result.item.description"></div>
             </div>
         </div>
     </div>
