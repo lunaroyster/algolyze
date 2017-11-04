@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/lunaroyster/algolyze#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
     "fs-extra": "^4.0.1",
+    "jquery": "^1.9.1",
     "jsonschema": "^1.2.0",
     "less": "^2.7.2",
+    "node-sass": "^4.6.0",
+    "popper.js": "^1.12.6",
     "q": "^1.5.0",
     "underscore": "^1.8.3"
   },
