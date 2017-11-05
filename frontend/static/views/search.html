@@ -1,12 +1,14 @@
 <div id="searchView">
-    <div id="searchPanel">
-        <div id="contentBar">
-            <h1>algolyze</h1>
-            <input type="text" name="search" ng-model="searchTerm" ng-change="searchTermChange(searchTerm)"/>
+    <section id="searchPanel" class="">
+        <div class="container">
+            <h1 class="logo py-2">algolyze</h1>
+            <div class="form-group py-2">
+                <input class="form-control text-center border-bottom-0 bg-dark" placeholder="The algorithm you're searching for" ng-model="searchTerm" ng-change="searchTermChange(searchTerm)" type="text" name="search">
+            </div>
         </div>
-    </div>
-    <div id="resultsPanel">
-        <div class="results">
+    </section>
+    <section id="resultsPanel">
+        <div class="results container">
             <div class="result" role="button" ng-repeat="result in results" ng-click="viewAlgorithm(result)" tabindex=0>
                 <div class="name" ng-bind="result.item.name"></div>
                 <div class="longName" ng-bind="result.item.longName"></div>
@@ -14,5 +16,5 @@
                 <div class="description" ng-bind="result.item.description"></div>
             </div>
         </div>
-    </div>
+    </section>
 </div>

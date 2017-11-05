@@ -117,7 +117,7 @@ app.factory('algorithmService', function(dataService, $q) {
     return algorithmService;
 });
 
-app.controller('homeController', function($scope, dataService) {
+app.controller('baseController', function($scope, dataService) {
     
 });
 

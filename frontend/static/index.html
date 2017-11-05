@@ -1,50 +1,63 @@
 <html>
-  <head>
-    <!--Meta-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>algolyze</title>
-    <!--<base href="/">-->
-    
-    <meta property="og:title" content="algolyze">
-    <meta property="og:site_name" content="algolyze">
-    <meta property="og:description" content="A searchable database of algorithms.">
+    <head>
+        <!--Meta-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>algolyze</title>
+        <!--<base href="/">-->
+        
+        <meta property="og:title" content="algolyze">
+        <meta property="og:site_name" content="algolyze">
+        <meta property="og:description" content="A searchable database of algorithms.">
 
-    <!--Stylesheet Libraries and fonts-->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Stylesheet Libraries and fonts-->
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!--Javascript Libraries-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.1.0/fuse.min.js"></script>
+        <!--Javascript Libraries-->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.1.0/fuse.min.js"></script>
 
-    <!--Resources-->
-    <script src="app.js"></script>
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    
-    <!--Google Analytics-->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-106216675-1', 'auto');
-      // ga('set', 'hostname', 'lunaroyster.github.io/algolyze');
-      ga('send', 'pageview');
-    
-    </script>
-  </head>
-  <body ng-app="algolyze" >
-    <div ng-controller="homeController">
-      <div id="mainbox">
-        <div ng-view></div>
-      </div>
-    </div>
-  </body>
+        <!--Resources-->
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="css/theme.css" type="text/css" />
+        
+        <!--Google Analytics-->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+            ga('create', 'UA-106216675-1', 'auto');
+            // ga('set', 'hostname', 'lunaroyster.github.io/algolyze');
+            ga('send', 'pageview');
+        
+        </script>
+    </head>
+    <body ng-app="algolyze" >
+        <div ng-controller="baseController">
+            <nav class="navbar fixed-top navbar-expand-lg" id="mainNav">
+                <!--<a href="#" class="navbar-brand"></a>-->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav">
+                        <!--<li class="nav-item">-->
+                        <!--    <a class="nav-link" href="#">Home</a>-->
+                        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                        <!--    <a class="nav-link" href="#">Reports</a>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </nav>
+            <div id="mainbox">
+                <div ng-view></div>
+            </div>
+        </div>
+    </body>
 </html>
