@@ -1,6 +1,7 @@
 <div id="algorithmPageView">
-    <div class="panel header">
-        <div class="container">
+    <div class="navPadding"></div>
+    <div class="header">
+        <div class="container pb-4">
             <div class="name" ng-bind="algorithm.name"></div>
             <div class="longName" ng-bind="algorithm.longName"></div>
             <div class="tags">
@@ -9,13 +10,13 @@
             <div class="description" ng-bind="algorithm.description"></div>
         </div>
     </div>
-    <div class="panel body">
-        <div class="container">
+    <div class="body">
+        <div class="container py-4">
             <div class="longDescription markdowned" ng-bind-html="longDescriptionAsHTML(algorithm.longDescription)" ng-show="!!algorithm.longDescription"></div>
             <div class="longDescription markdowned" ng-show="!algorithm.longDescription" ng-bind-html="longDescriptionAsHTML(noPageMarkdown)"></div>
         </div>
     </div>
-    <div class="panel footer">
+    <div class="footer">
         <div class="container">
             <div class="links" ng-bind="algorithm.links"></div>
         </div>

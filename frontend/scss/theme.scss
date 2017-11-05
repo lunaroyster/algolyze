@@ -22,7 +22,10 @@ $l7: darken($light, 35%);
 
 $highlight: #009688;
 
-$enable-rounded: false;
+$primary: $light;
+$body-bg: $light;
+
+// $enable-rounded: false;
 $enable-shadows: true;
 
 @mixin tag {
@@ -32,6 +35,37 @@ $enable-shadows: true;
     font-size: 80%;
     align-items: center;
     font-weight: 100;
+}
+
+body {
+    margin: 0;
+    overflow-y: scroll;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+}
+
+::-webkit-scrollbar {
+    background: $d0;
+    width: 0.5em;
+}
+::-webkit-scrollbar-thumb {
+    background: $d2;
+}
+
+.navPadding {
+    height: 4em;
+}
+nav {
+    height: 4em;
+    .navbar-brand {
+        font-family: 'Roboto Mono', monospace !important;
+    }
+}
+#mainNav {
+    background-color: #000000 !important;
 }
 
 #searchView {
@@ -49,7 +83,7 @@ $enable-shadows: true;
         input[type="text"] {
             outline: none;
             border: none;
-            // font-size: xx-large;
+            font-size: x-large;
             background: $d3 !important;
         }
     }
@@ -93,5 +127,60 @@ $enable-shadows: true;
         }
     }
 }
+
+#algorithmPageView {
+    .header {
+        background: $d0;
+        .name {
+            color: $l0;
+            font-size: xx-large;
+            font-weight: 100;
+        }
+        .longName {
+            color: grey;
+            padding-bottom: 10px;
+        }
+        .tags {
+            padding-bottom: 1em;
+            .tag {
+                @include tag;
+                background: $d1;
+                color: $l7;
+            }
+        }
+        .description {
+            padding: 1em;
+            color: white;
+            font-size: larger;
+            font-family: 'Open Sans';
+            background: $d2;
+        }
+    }
+}
+
+.markdowned {
+    ul {
+        padding-left: 2em !important;
+        li {
+            list-style-type: circle;
+        }
+    }
+    strong {
+        font-weight: bolder;
+    }
+    a {
+        text-decoration: none;
+        color: $highlight;
+    }
+    code {
+        display: block;
+        background: $l1;
+        font-family: consolas;
+        font-weight: 100;
+        padding: 1em 3em 1em 3em;
+        opacity: 0.8;
+    }
+}
+
         
 @import "node_modules/bootstrap/scss/bootstrap";
