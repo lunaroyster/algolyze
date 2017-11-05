@@ -10,7 +10,7 @@
     </section>
     <section id="resultsPanel">
         <div class="results container">
-            <div class="result" role="button" ng-repeat="result in results" ng-click="viewAlgorithm(result)" tabindex=0>
+            <div class="result" role="button" ng-repeat="result in results" ng-click="viewAlgorithm(result.item)" tabindex=0>
                 <div class="name" ng-bind="result.item.name"></div>
                 <div class="longName" ng-bind="result.item.longName"></div>
                 <span class="tag" ng-repeat="tag in result.item.tags" ng-bind="tag"></span>
