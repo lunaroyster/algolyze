@@ -35,7 +35,7 @@ var algorithm = {
                     "name": {
                         "required": true
                     },
-                    "picture": {
+                    "img": {
                         "required": false
                     }
                 }

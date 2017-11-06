@@ -20,7 +20,7 @@
         <div class="container">
             <div class="links">
                 <div class="link" ng-repeat="link in algorithm.links" ng-click="viewExternalLink(link)">
-                    <img src="images/Wikipedia's_W.svg"></img>
+                    <img ng-src="{{link.img}}"></img>
                     <span ng-bind="link.name"></span>
                 </div>
             </div>

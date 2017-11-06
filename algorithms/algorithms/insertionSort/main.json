@@ -6,7 +6,8 @@
     "links": [
         {
             "name": "Wikipedia—Insertion Sort",
-            "url": "https://en.wikipedia.org/wiki/Insertion_sort"
+            "url": "https://en.wikipedia.org/wiki/Insertion_sort",
+            "img": "images/Wikipedia's_W.svg"
         }
     ]
 }

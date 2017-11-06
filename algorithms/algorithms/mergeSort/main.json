@@ -6,7 +6,8 @@
     "links": [
         {
             "name": "Wikipedia—Merge Sort",
-            "url": "https://en.wikipedia.org/wiki/Merge_sort"
+            "url": "https://en.wikipedia.org/wiki/Merge_sort",
+            "img": "images/Wikipedia's_W.svg"
         }
     ]
 }
