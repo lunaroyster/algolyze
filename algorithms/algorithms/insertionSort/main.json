@@ -3,5 +3,11 @@
     "longName": "Insertion sort",
     "tags": ["sorting", "insertion"],
     "description": "Insertion sort builds a sorted array inserting items into the right location one at a time.",
-    "links": ["https://en.wikipedia.org/wiki/Insertion_sort"]
+    "links": [
+        {
+            "name": "Wikipedia—Insertion Sort",
+            "url": "https://en.wikipedia.org/wiki/Insertion_sort",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
 }

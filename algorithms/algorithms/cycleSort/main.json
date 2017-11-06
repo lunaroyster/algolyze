@@ -1,0 +1,13 @@
+{
+    "name": "Cycle Sort",
+    "longName": "Cycle Sort",
+    "tags": ["cycle", "decomposition", "comparison", "in-place", "unstable"],
+    "description": "Cycle sort is an unstable, in-place sort that minimizes writes to the original array. It works by finding the cycle decomposition of the input and reverses it to put everything in place.",
+    "links": [
+        {
+            "name": "Wikipedia—Cycle Sort",
+            "url": "https://en.wikipedia.org/wiki/Cycle_sort",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
+}

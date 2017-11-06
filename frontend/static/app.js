@@ -144,7 +144,7 @@ app.controller('searchController', function($scope, algorithmService, $location)
     // };
 });
 
-app.controller('algorithmPageController', function($scope, algorithmService, $location, $routeParams, markdownService) {
+app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService) {
     $scope.initialize = ()=> {
         algorithmService.getAlgorithm($routeParams.algorithm)
         .then((algorithm)=> {
@@ -152,6 +152,10 @@ app.controller('algorithmPageController', function($scope, algorithmService, $lo
         });
     };
     $scope.initialize();
+    
+    $scope.viewExternalLink = (link)=> {
+        $window.open(link.url, "_blank");
+    };
     
     $scope.noPageMarkdown = "##This algorithm doesn't seem to have a page. \n\nCreate a page.";
     

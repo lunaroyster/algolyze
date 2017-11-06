@@ -26,9 +26,19 @@ var algorithm = {
         },
         "links": {
             "type": "array",
-            "uniqueItems": true,
             "items": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "required": true
+                    },
+                    "name": {
+                        "required": true
+                    },
+                    "img": {
+                        "required": false
+                    }
+                }
             }
         }
     }

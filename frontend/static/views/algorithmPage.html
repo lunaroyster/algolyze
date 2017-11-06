@@ -18,7 +18,12 @@
     </div>
     <div class="footer">
         <div class="container">
-            <div class="links" ng-bind="algorithm.links"></div>
+            <div class="links">
+                <div class="link" ng-repeat="link in algorithm.links" ng-click="viewExternalLink(link)">
+                    <img ng-src="{{link.img}}"></img>
+                    <span ng-bind="link.name"></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
