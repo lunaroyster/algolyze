@@ -1,4 +1,4 @@
-/* global angular Fuse markdown */
+/* global angular Fuse markdown ga */
 
 var app = angular.module("algolyze", ['ngRoute']);
 
@@ -149,6 +149,10 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
         algorithmService.getAlgorithm($routeParams.algorithm)
         .then((algorithm)=> {
             $scope.algorithm = algorithm;
+            ga('send', {
+                hitType: 'pageview',
+                page: `/a/${algorithm.name}`
+            });
         });
     };
     $scope.initialize();
