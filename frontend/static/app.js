@@ -43,6 +43,25 @@ app.service('markdownService', function($sce) {
     };
 });
 
+app.service('TagCollection', function() {
+    var TagCollection = class {
+        constructor(algorithmList) {
+            this.algorithmList = algorithmList;
+        }
+        getTags() {
+            let tags = {};
+            for(let algorithm of this.algorithmList) {
+                for(let tag of algorithm.tags) {
+                    if(!tags[tag]) tags[tag] = [];
+                    tags[tag].push(algorithm);
+                }
+            }
+            return tags;
+        }
+    };
+    return TagCollection;
+});
+
 app.factory('algorithmService', function(dataService, $q) {
     var algorithmService = {};
     var algorithmList = undefined;
