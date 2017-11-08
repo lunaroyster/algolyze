@@ -27,11 +27,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 }]);
 
 app.service('dataService', function($http) {
-    this.fetchAlgorithms = ()=> {
-        return $http.get('algorithms/compiled.json')
-        .then((response)=> {
-            return response.data;
-        });
+    this.fetchAlgorithms = async()=> {
+        let response = await $http.get('algorithms/compiled.json');
+        return response.data;
     };
 });
 
@@ -49,29 +47,18 @@ app.factory('algorithmService', function(dataService, $q) {
     var algorithmService = {};
     var algorithmList = undefined;
     
-    var getAlgorithms = function() {
-        return $q((resolve, reject) => {resolve()})
-        .then(()=> {
-            if(algorithmList) return;
-            return dataService.fetchAlgorithms()
-            .then((algList)=> {
-                algorithmList = algList;
-            });
-        })
-        .then(()=> {
-            return algorithmList;
-        });
+    var getAlgorithms = async function() {
+        if(algorithmList) return algorithmList;
+        algorithmList = await dataService.fetchAlgorithms();
+        return algorithmList;
     };
     
-    var getAlgorithm = function(name) {
-        return getAlgorithms()
-        .then((algorithms)=> {
-            console.log(algorithms);
-            return algorithms.filter((item)=>{return item.name==name})[0];
-        });
+    var getAlgorithm = async function(name) {
+        let algorithms = await getAlgorithms();
+        return algorithms.filter((item)=>{return item.name==name})[0];
     };
     
-    var initialize = ()=> {
+    var initialize = async()=> {
         var fuseOptions = {
             shouldSort: true,
             findAllMatches: true,
@@ -99,11 +86,9 @@ app.factory('algorithmService', function(dataService, $q) {
                 }
             ]
         };
-        getAlgorithms()
-        .then((algorithmList)=> {
-            var fuse = new Fuse(algorithmList, fuseOptions);
-            algorithmService.fuse = fuse;
-        });
+        let algorithmList = await getAlgorithms()
+        var fuse = new Fuse(algorithmList, fuseOptions);
+        algorithmService.fuse = fuse;
     };
     initialize();
     
@@ -145,14 +130,13 @@ app.controller('searchController', function($scope, algorithmService, $location)
 });
 
 app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService) {
-    $scope.initialize = ()=> {
-        algorithmService.getAlgorithm($routeParams.algorithm)
-        .then((algorithm)=> {
-            $scope.algorithm = algorithm;
-            ga('send', {
-                hitType: 'pageview',
-                page: `/a/${algorithm.name}`
-            });
+    $scope.initialize = async()=> {
+        let algorithm = await algorithmService.getAlgorithm($routeParams.algorithm);
+        $scope.algorithm = algorithm;
+        $scope.$digest();
+        ga('send', {
+            hitType: 'pageview',
+            page: `/a/${algorithm.name}`
         });
     };
     $scope.initialize();
