@@ -1,0 +1,17 @@
+<div id="tagsView">
+    <div class="navPadding"></div>
+    <div class="container py-1">
+        <div class="pre py-4">
+            <div ng-repeat="tag in pretags" class="tag" ng-click="displayTag(tag)">
+                <span class="count" ng-bind="tag.count"></span>
+                <span class="name" ng-bind="tag.name"></span>
+            </div>
+        </div>
+        <div class="post py-4">
+            <div ng-repeat="tag in posttags" class="tag" ng-click="displayTag(tag)">
+                <span class="count" ng-bind="tag.count"></span>
+                <span class="name" ng-bind="tag.name"></span>
+            </div>
+        </div>
+    </div>
+</div>

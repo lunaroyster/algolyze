@@ -158,6 +158,21 @@ nav {
     }
 }
 
+#tagsView {
+    .tag {
+        display: inline-flex;
+        background-color: $l1;
+        margin: 1px;
+        .count {
+            padding: 1em;
+            background-color: $l2;
+        }
+        .name {
+            padding: 1em;
+        }
+    }
+}
+
 .markdowned {
     ul {
         padding-left: 2em !important;

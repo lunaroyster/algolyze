@@ -15,6 +15,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl : './views/algorithmPage.html'
     })
     
+    .when('/tags', {
+        controller  : 'tagsController',
+        templateUrl : './views/tags.html'
+    })
+    
     .otherwise({
         controller  : '404Controller',
         templateUrl : './views/404.html'
@@ -146,6 +151,31 @@ app.controller('searchController', function($scope, algorithmService, $location)
     //     }
     //     return algorithms;
     // };
+});
+
+app.controller('tagsController', function($scope, algorithmService, TagCollection) {
+    $scope.initialize = async()=> {
+        $scope.tagCollection = new TagCollection(await algorithmService.getAlgorithms()).getTags();
+        let processedTagCollection = [];
+        for(let tag in $scope.tagCollection) {
+            processedTagCollection.push({
+                name: tag,
+                algorithms: $scope.tagCollection[tag],
+                count: $scope.tagCollection[tag].length
+            });
+        }
+        $scope.tags = processedTagCollection.sort((a,b)=>{return b.count-a.count});
+        $scope.pretags = $scope.tags;
+        $scope.$digest();
+    };
+    $scope.initialize();
+    
+    $scope.displayTag = (tag)=> {
+        let selectedIndex = $scope.tags.findIndex((t)=>{return t.name==tag.name});
+        $scope.pretags = $scope.tags.slice(0, selectedIndex);
+        $scope.selectedTag = $scope.tags[selectedIndex];
+        $scope.posttags = $scope.tags.slice(selectedIndex+1);
+    };
 });
 
 app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService) {
