@@ -163,13 +163,19 @@ nav {
         display: inline-flex;
         background-color: $l1;
         margin: 1px;
+        > * {
+            padding: 0.5em;
+            @media (min-width: 992px) {
+                padding: 1em;
+            }
+        }
         .count {
-            padding: 1em;
             background-color: $l2;
         }
-        .name {
-            padding: 1em;
-        }
+    }
+    .selected {
+        background: $d0;
+        color: $l0;
     }
 }
 

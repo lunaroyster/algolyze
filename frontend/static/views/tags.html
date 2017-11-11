@@ -1,13 +1,21 @@
 <div id="tagsView">
     <div class="navPadding"></div>
-    <div class="container py-1">
-        <div class="pre py-4">
+        <div class="container pre py-4"  ng-show="!(pretags.length==0)">
             <div ng-repeat="tag in pretags" class="tag" ng-click="displayTag(tag)">
                 <span class="count" ng-bind="tag.count"></span>
                 <span class="name" ng-bind="tag.name"></span>
             </div>
         </div>
-        <div class="post py-4">
+        <div class="container-fluid selected py-4" ng-show="!!selectedTag">
+            <div class="container">
+                <h2 ng-bind="selectedTag.name"></h2>
+                <!--<div ng-repeat="tag in pretags" class="tag" ng-click="displayTag(tag)">-->
+                <!--    <span class="count" ng-bind="tag.count"></span>-->
+                <!--    <span class="name" ng-bind="tag.name"></span>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="container post py-4">
             <div ng-repeat="tag in posttags" class="tag" ng-click="displayTag(tag)">
                 <span class="count" ng-bind="tag.count"></span>
                 <span class="name" ng-bind="tag.name"></span>
