@@ -48,23 +48,54 @@ app.service('markdownService', function($sce) {
     };
 });
 
-app.service('TagCollection', function() {
-    var TagCollection = class {
-        constructor(algorithmList) {
-            this.algorithmList = algorithmList;
-        }
-        getTags() {
+app.service('AlgorithmCollection', function() {
+   var AlgorithmCollection = class {
+       constructor(algorithms) {
+           this.algorithms = algorithms;
+       }
+       getTagCollection() {
             let tags = {};
-            for(let algorithm of this.algorithmList) {
+            for(let algorithm of this.algorithms) {
                 for(let tag of algorithm.tags) {
                     if(!tags[tag]) tags[tag] = [];
                     tags[tag].push(algorithm);
                 }
             }
             return tags;
-        }
-    };
-    return TagCollection;
+       }
+       getCountedTags() {
+           let tags = this.getTagCollection();
+           let countedTags = [];
+            for(let tag in tags) {
+                countedTags.push({
+                    name: tag,
+                    algorithms: tags[tag],
+                    count: tags[tag].length
+                });
+            }
+            return countedTags.sort((a,b)=>{return b.count-a.count});
+       }
+       getAlgorithms(...tags) {
+           let algorithms = [];
+           for(let algorithm of this.algorithms) {
+               try {
+                   for(let tag of tags) {
+                       if(algorithm.tags.indexOf(tag)==-1) throw new Error();
+                   }
+                   algorithms.push(algorithm);
+               }
+               catch (e) {
+                   
+               }
+           }
+           return algorithms;
+       }
+       getSubTags(...tags) {
+           let algorithms = this.getAlgorithms(...tags);
+           return new AlgorithmCollection(algorithms).getCountedTags();
+       }
+   };
+   return AlgorithmCollection;
 });
 
 app.factory('algorithmService', function(dataService, $q) {
@@ -153,34 +184,48 @@ app.controller('searchController', function($scope, algorithmService, $location)
     // };
 });
 
-app.controller('tagsController', function($scope, algorithmService, TagCollection) {
+app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection) {
     $scope.initialize = async()=> {
-        let processedTagCollection = $scope.processTags(await algorithmService.getAlgorithms());
-        $scope.tags = processedTagCollection.sort((a,b)=>{return b.count-a.count});
-        $scope.pretags = $scope.tags;
+        $scope.algorithmCollection = new AlgorithmCollection(await algorithmService.getAlgorithms());
+        $scope.tags = $scope.algorithmCollection.getCountedTags();
+        $scope.reset();
         $scope.$digest();
     };
     
-    $scope.displayTag = (tag)=> {
-        let selectedIndex = $scope.tags.findIndex((t)=>{return t.name==tag.name});
-        $scope.pretags = $scope.tags.slice(0, selectedIndex);
-        $scope.selectedTag = $scope.tags[selectedIndex];
-        $scope.posttags = $scope.tags.slice(selectedIndex+1);
-        $scope.selectedProcessedTags = $scope.processTags($scope.selectedTag.algorithms);
-        console.log($scope.selectedProcessedTags);
-    };
-    
-    $scope.processTags = (algorithms)=> {
-        let tagCollection = new TagCollection(algorithms).getTags();
-        let processedTagCollection = [];
-        for(let tag in tagCollection) {
-            processedTagCollection.push({
-                name: tag,
-                algorithms: tagCollection[tag],
-                count: tagCollection[tag].length
-            });
+    $scope.selectTag = (tag, reset)=> {
+        if(reset) {
+            $scope.selectedTags = [];
+            $scope.selectedIndex = $scope.tags.findIndex((t)=>{return t.name==tag.name});
         }
-        return processedTagCollection.sort((a,b)=>{return b.count-a.count});
+        
+        if(tag in $scope.selectedTags) return;
+        $scope.selectedTags.push(tag.name);
+        $scope.refresh();
+    };
+    $scope.removeTag = (tag)=> {
+        if($scope.selectedTags.indexOf(tag)==0) {
+            $scope.reset();
+        }
+        else {
+            $scope.selectedTags.splice($scope.selectedTags.indexOf(tag), 1);
+            $scope.refresh();
+        }
+    };
+    $scope.reset = ()=> {
+        $scope.selectedTags = [];
+        $scope.selectedIndex = $scope.tags.length;
+    };
+    $scope.refresh = ()=> {
+        $scope.selectedAlgorithms = $scope.algorithmCollection.getAlgorithms(...$scope.selectedTags);
+        
+        //Clean this mess
+        let totalSubTags = $scope.algorithmCollection.getSubTags(...$scope.selectedTags);
+        let nonDupeSubTags = [];
+        for(let subTag of totalSubTags) {
+            if($scope.selectedTags.indexOf(subTag.name)!=-1) continue;
+            nonDupeSubTags.push(subTag);
+        }
+        $scope.subTags = nonDupeSubTags;
     };
     
     $scope.initialize();
