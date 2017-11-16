@@ -172,6 +172,14 @@ nav {
         .count {
             background-color: $l2;
         }
+        
+        &.dark {
+            background-color: $d1;
+            .count {
+                background-color: $d2;
+            }
+        }
+        
     }
     .selected {
         background: $d0;
