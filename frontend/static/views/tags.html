@@ -18,8 +18,9 @@
                     <span class="count" ng-bind="tag.count"></span>
                     <span class="name" ng-bind="tag.name"></span>
                 </div>
-                <div ng-repeat="algorithm in selectedAlgorithms">
-                    <div ng-bind="algorithm.name"></div>
+                <div ng-repeat="algorithm in selectedAlgorithms" class="algorithm py-4" ng-click="viewAlgorithm(algorithm)">
+                    <span class="name" ng-bind="algorithm.name"></span>
+                    <span class="longName text-truncate" ng-bind="algorithm.description"></span>
                 </div>
             </div>
         </div>

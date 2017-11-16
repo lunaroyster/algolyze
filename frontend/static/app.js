@@ -184,7 +184,7 @@ app.controller('searchController', function($scope, algorithmService, $location)
     // };
 });
 
-app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection) {
+app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection, $location) {
     $scope.initialize = async()=> {
         $scope.algorithmCollection = new AlgorithmCollection(await algorithmService.getAlgorithms());
         $scope.tags = $scope.algorithmCollection.getCountedTags();
@@ -226,6 +226,9 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
             nonDupeSubTags.push(subTag);
         }
         $scope.subTags = nonDupeSubTags;
+    };
+    $scope.viewAlgorithm = (algorithm)=> {
+        $location.path(`/a/${algorithm.name}`);
     };
     
     $scope.initialize();

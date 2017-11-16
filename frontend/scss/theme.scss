@@ -184,6 +184,16 @@ nav {
     .selected {
         background: $d0;
         color: $l0;
+        .algorithm {
+            border-bottom: 2px dashed $d2;
+            .name {
+                
+            }
+            .longName {
+                color: $l4;
+                display: block;
+            }
+        }
     }
 }
 
