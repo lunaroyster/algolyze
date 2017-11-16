@@ -1,0 +1,33 @@
+<div id="tagsView">
+    <div class="navPadding"></div>
+        <div class="container pre py-4" ng-show="selectedIndex!=0">
+            <div ng-repeat="tag in tags.slice(0, selectedIndex)" class="tag" ng-click="selectTag(tag, true)">
+                <span class="count" ng-bind="tag.count"></span>
+                <span class="name" ng-bind="tag.name"></span>
+            </div>
+        </div>
+        <div class="container-fluid selected py-4" ng-show="selectedTags.length>0">
+            <div class="container">
+                <h2>
+                    <span ng-repeat="tag in selectedTags" ng-click="removeTag(tag)">
+                        <span ng-bind="tag"></span>
+                        <span ng-show="!$last"> > </span>
+                    </span>
+                </h2>
+                <div ng-repeat="tag in subTags" class="tag dark" ng-click="selectTag(tag)">
+                    <span class="count" ng-bind="tag.count"></span>
+                    <span class="name" ng-bind="tag.name"></span>
+                </div>
+                <div ng-repeat="algorithm in selectedAlgorithms">
+                    <div ng-bind="algorithm.name"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container post py-4">
+            <div ng-repeat="tag in tags.slice(selectedIndex+1)" class="tag" ng-click="selectTag(tag, true)">
+                <span class="count" ng-bind="tag.count"></span>
+                <span class="name" ng-bind="tag.name"></span>
+            </div>
+        </div>
+    </div>
+</div>
