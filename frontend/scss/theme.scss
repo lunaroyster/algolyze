@@ -158,6 +158,45 @@ nav {
     }
 }
 
+#tagsView {
+    .tag {
+        display: inline-flex;
+        background-color: $l1;
+        margin: 1px;
+        > * {
+            padding: 0.5em;
+            @media (min-width: 992px) {
+                padding: 1em;
+            }
+        }
+        .count {
+            background-color: $l2;
+        }
+        
+        &.dark {
+            background-color: $d1;
+            .count {
+                background-color: $d2;
+            }
+        }
+        
+    }
+    .selected {
+        background: $d0;
+        color: $l0;
+        .algorithm {
+            border-bottom: 2px dashed $d2;
+            .name {
+                
+            }
+            .longName {
+                color: $l4;
+                display: block;
+            }
+        }
+    }
+}
+
 .markdowned {
     ul {
         padding-left: 2em !important;

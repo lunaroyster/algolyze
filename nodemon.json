@@ -1,4 +1,4 @@
 {   
-    "ignore": ["dist", "frontend/css"],
+    "ignore": ["dist", "frontend/css", "**/generated"],
     "ext": "js json less html scss"
 }
