@@ -190,6 +190,10 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
         $scope.tags = $scope.algorithmCollection.getCountedTags();
         $scope.reset();
         $scope.$digest();
+        ga('send', {
+            hitType: 'pageview',
+            page: `/tags`
+        });
     };
     
     $scope.selectTag = (tag, reset)=> {
