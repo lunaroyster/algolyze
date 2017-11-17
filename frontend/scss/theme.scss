@@ -203,6 +203,13 @@ nav {
         background: $d0;
         color: $l0;
         border-top: 2px solid $d1;
+        .selectedTag {
+            cursor: pointer;
+            transition: 0.2s all;
+            &:hover {
+                background-color: $d1;
+            }
+        }
         .algorithm {
             transition: 0.2s all;
             border-bottom: 2px dashed $d2;

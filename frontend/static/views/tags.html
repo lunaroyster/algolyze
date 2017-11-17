@@ -16,7 +16,7 @@
         <div class="container">
             <h2 class="py-2">
                 <span ng-repeat="tag in selectedTags" ng-click="removeTag(tag)">
-                    <span ng-bind="tag"></span>
+                    <span ng-bind="tag" class="selectedTag p-2"></span>
                     <span ng-show="!$last"> > </span>
                 </span>
             </h2>
