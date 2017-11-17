@@ -10,12 +10,14 @@ An algorithm MUST have a file, and SHOULD have a page.
 
 To add an algorithm:
 
-- Create an algorithm file in the folder algorithm/files
+- Create a folder: algorithms/algorithms/{algorithmName}
 
-- Create an algorithm page in the folder algorithm/pages (optional but recommended)
+- Create a file main.json. You could refer to other algorithms for the format.
 
-- Run `npm run verify`. Make sure there are no errors.
+- Create a file page.md. (optional)
 
 - Run `npm run dist`. Make sure there are no errors. 
 
-- After running `npm run dist`, try accessing algolyze at dist/index.html with a browser. Search for your algorithm and make sure things look alright.
+- After running `npm run dist`, try accessing algolyze at dist/index.html with a browser. Search for your algorithm and make sure things look alright. If you made a page, check it out to see if your markdown rendered properly
+
+- Make a pull request
