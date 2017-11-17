@@ -163,6 +163,8 @@ nav {
         display: inline-flex;
         background-color: $l1;
         margin: 1px;
+        transition: 0.2s all;
+        cursor: pointer;
         > * {
             padding: 0.5em;
             @media (min-width: 992px) {
@@ -170,28 +172,57 @@ nav {
             }
         }
         .count {
+            transition: 0.2s all;
             background-color: $l2;
         }
-        
+        &:hover {
+            background-color: $l2;
+            .count {
+                background-color: $l3;
+            }
+        }
         &.dark {
             background-color: $d1;
             .count {
                 background-color: $d2;
             }
+            &:hover {
+                background-color: $d2;
+                .count {
+                    background-color: $d3;
+                }
+            }
         }
         
+    }
+    #tagInfo {
+        background-color: $d0;
+        color: $l0;
     }
     .selected {
         background: $d0;
         color: $l0;
+        border-top: 2px solid $d1;
+        .selectedTag {
+            cursor: pointer;
+            transition: 0.2s all;
+            &:hover {
+                background-color: $d1;
+            }
+        }
         .algorithm {
+            transition: 0.2s all;
             border-bottom: 2px dashed $d2;
+            cursor: pointer;
             .name {
                 
             }
             .longName {
                 color: $l4;
                 display: block;
+            }
+            &:hover {
+                border-bottom: 2px dashed $l2;
             }
         }
     }

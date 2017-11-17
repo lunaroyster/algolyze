@@ -1,34 +1,39 @@
 <div id="tagsView">
     <div class="navPadding"></div>
-        <div class="container pre py-4" ng-show="selectedIndex!=0">
-            <div ng-repeat="tag in tags.slice(0, selectedIndex)" class="tag" ng-click="selectTag(tag, true)">
+    <section id="tagInfo" class="py-4">
+        <div class="container">
+            <h1>Tags</h1>
+            <p>Algorithms are grouped by tags. Click on any of these tags to view related algorithms and subtags.</p>
+        </div>
+    </section>
+    <div class="container pre py-4" ng-show="selectedIndex!=0">
+        <div ng-repeat="tag in tags.slice(0, selectedIndex)" class="tag" ng-click="selectTag(tag, true)">
+            <span class="count" ng-bind="tag.count"></span>
+            <span class="name" ng-bind="tag.name"></span>
+        </div>
+    </div>
+    <div class="container-fluid selected py-4" ng-show="selectedTags.length>0">
+        <div class="container">
+            <h2 class="py-2">
+                <span ng-repeat="tag in selectedTags" ng-click="removeTag(tag)">
+                    <span ng-bind="tag" class="selectedTag p-2"></span>
+                    <span ng-show="!$last"> > </span>
+                </span>
+            </h2>
+            <div ng-repeat="tag in subTags" class="tag dark" ng-click="selectTag(tag)">
                 <span class="count" ng-bind="tag.count"></span>
                 <span class="name" ng-bind="tag.name"></span>
             </div>
-        </div>
-        <div class="container-fluid selected py-4" ng-show="selectedTags.length>0">
-            <div class="container">
-                <h2>
-                    <span ng-repeat="tag in selectedTags" ng-click="removeTag(tag)">
-                        <span ng-bind="tag"></span>
-                        <span ng-show="!$last"> > </span>
-                    </span>
-                </h2>
-                <div ng-repeat="tag in subTags" class="tag dark" ng-click="selectTag(tag)">
-                    <span class="count" ng-bind="tag.count"></span>
-                    <span class="name" ng-bind="tag.name"></span>
-                </div>
-                <div ng-repeat="algorithm in selectedAlgorithms" class="algorithm py-4" ng-click="viewAlgorithm(algorithm)">
-                    <span class="name" ng-bind="algorithm.name"></span>
-                    <span class="longName text-truncate" ng-bind="algorithm.description"></span>
-                </div>
+            <div ng-repeat="algorithm in selectedAlgorithms" class="algorithm py-4" ng-click="viewAlgorithm(algorithm)">
+                <span class="name" ng-bind="algorithm.name"></span>
+                <span class="longName text-truncate" ng-bind="algorithm.description"></span>
             </div>
         </div>
-        <div class="container post py-4">
+    </div>
+    <div class="container post py-4">
             <div ng-repeat="tag in tags.slice(selectedIndex+1)" class="tag" ng-click="selectTag(tag, true)">
                 <span class="count" ng-bind="tag.count"></span>
                 <span class="name" ng-bind="tag.name"></span>
             </div>
         </div>
-    </div>
 </div>
