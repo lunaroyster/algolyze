@@ -2,5 +2,12 @@
     "name": "Selection Sort",
     "longName": "Selection sort",
     "tags": ["sorting", "selection", "in-place"],
-    "description": "The algorithm divides the input list into sorted and unsorted. The algorithm proceeds by finding the smallest  element in the unsorted sublist and swapping it with the first unsorted element after the sorted sublist, and moving the sublist boundaries one element to the right."
+    "description": "The algorithm divides the input list into sorted and unsorted. The algorithm proceeds by finding the smallest  element in the unsorted sublist and swapping it with the first unsorted element after the sorted sublist, and moving the sublist boundaries one element to the right.",
+    "links": [
+        {
+            "name": "Wikipedia—Selection sort",
+            "url": "https://en.wikipedia.org/wiki/Selection_sort",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
 }

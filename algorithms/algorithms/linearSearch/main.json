@@ -2,5 +2,12 @@
     "name": "Linear Search",
     "longName": "Linear/Sequential Search",
     "tags": ["search", "linear", "sequential"],
-    "description": "Linear search sequentially checks each element of the list for the target value until a match is found or until all the elements have been searched"
+    "description": "Linear search sequentially checks each element of the list for the target value until a match is found or until all the elements have been searched",
+    "links": [
+        {
+            "name": "Wikipedia—Linear Search",
+            "url": "https://en.wikipedia.org/wiki/Linear_search",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
 }

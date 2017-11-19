@@ -2,5 +2,12 @@
     "name": "Comb Sort",
     "longName": "Comb sort (Bubble Sort)",
     "tags": ["sorting", "comparision", "comb", "turtle", "rabbit"],
-    "description": "Comb sort improves upon bubble sort. It iterates through the array, comparing elements multiple spaces away, reducing the gap each iteration."
+    "description": "Comb sort improves upon bubble sort. It iterates through the array, comparing elements multiple spaces away, reducing the gap each iteration.",
+    "links": [
+        {
+            "name": "Wikipedia—Comb sort",
+            "url": "https://en.wikipedia.org/wiki/Comb_sort",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
 }
