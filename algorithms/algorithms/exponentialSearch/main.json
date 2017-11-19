@@ -2,5 +2,12 @@
     "name": "Exponential Search",
     "longName": "Exponential search | doubling search | galloping search | Struzik search",
     "tags": ["search", "exponential", "sorted search", "binary search"],
-    "description": "Exponential Search works on sorted lists. It repeatedly compares the target element to the element i, where i doubles each run. When the value of the target element is smaller than the element i, the required element is somewhere between the element i/2 and i. It then runs a binary search on this sublist to find the target element."
+    "description": "Exponential Search works on sorted lists. It repeatedly compares the target element to the element i, where i doubles each run. When the value of the target element is smaller than the element i, the required element is somewhere between the element i/2 and i. It then runs a binary search on this sublist to find the target element.",
+    "links": [
+        {
+            "name": "Wikipedia—Exponential search",
+            "url": "https://en.wikipedia.org/wiki/Exponential_search",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
 }
