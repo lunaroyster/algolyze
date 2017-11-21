@@ -81,12 +81,15 @@ nav {
         .logo {
             text-align: center;
             font-family: 'Roboto Mono', monospace !important;
+            &.undertext {
+                color: $l6;
+            }
         }
         input[type="text"] {
             outline: none;
             border: none;
             font-size: x-large;
-            background: $d3 !important;
+            background: $d1 !important;
         }
     }
     #resultsPanel {
