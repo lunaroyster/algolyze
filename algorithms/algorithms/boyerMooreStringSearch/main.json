@@ -1,6 +1,7 @@
 {
     "name": "Boyer-Moore string search",
     "longName": "Boyer–Moore string search algorithm",
+    "url": "Boyer-Moore-string-search",
     "tags": ["search", "string", "pattern"],
     "description": "Boyer-Moore string search processes the string/pattern being searched for, and uses that data to skip sections of the text. It's suitable in scenarios where the pattern is much shorter than the text.",
     "links": [
