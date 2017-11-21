@@ -1,6 +1,7 @@
 {
     "name": "Radix Sort",
     "longName": "Radix Sort",
+    "url": "Radix-Sort",
     "tags": ["sorting", "non-comparative", "positional"],
     "description": "Radix sort operates on a list of integers. It compares the digits of the numbers at equivalent place values, and sorts them with a stable sorting algorithm. Since strings, dates, and other datatypes can be represented in positional notational systems, they can be also sorted with Radix sort",
     "links": [

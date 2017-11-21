@@ -113,6 +113,11 @@ app.factory('algorithmService', function(dataService, $q) {
         return algorithms.filter((item)=>{return item.name==name})[0];
     };
     
+    var getAlgorithmByURL = async function(url) {
+        let algorithms = await getAlgorithms();
+        return algorithms.filter((item)=>{return item.url==url})[0];
+    };
+    
     var initialize = async()=> {
         var fuseOptions = {
             shouldSort: true,
@@ -153,6 +158,7 @@ app.factory('algorithmService', function(dataService, $q) {
     
     algorithmService.getAlgorithms = getAlgorithms;
     algorithmService.getAlgorithm = getAlgorithm;
+    algorithmService.getAlgorithmByURL = getAlgorithmByURL;
     algorithmService.fuzzySearch = fuzzySearch;
     return algorithmService;
 });
@@ -168,7 +174,7 @@ app.controller('searchController', function($scope, algorithmService, $location)
     $scope.initialize();
     
     $scope.viewAlgorithm = (algorithm)=> {
-        $location.path(`/a/${algorithm.name}`);
+        $location.path(`/a/${algorithm.url}`);
     };
     
     $scope.searchTermChange = (searchTerm)=> { 
@@ -232,7 +238,7 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
         $scope.subTags = nonDupeSubTags;
     };
     $scope.viewAlgorithm = (algorithm)=> {
-        $location.path(`/a/${algorithm.name}`);
+        $location.path(`/a/${algorithm.url}`);
     };
     
     $scope.initialize();
@@ -240,7 +246,7 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
 
 app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService) {
     $scope.initialize = async()=> {
-        let algorithm = await algorithmService.getAlgorithm($routeParams.algorithm);
+        let algorithm = await algorithmService.getAlgorithmByURL($routeParams.algorithm);
         $scope.algorithm = algorithm;
         $scope.$digest();
         ga('send', {

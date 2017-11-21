@@ -1,6 +1,7 @@
 {
     "name": "Linear Search",
     "longName": "Linear/Sequential Search",
+    "url": "Linear-Search",
     "tags": ["search", "linear", "sequential"],
     "description": "Linear search sequentially checks each element of the list for the target value until a match is found or until all the elements have been searched",
     "links": [
