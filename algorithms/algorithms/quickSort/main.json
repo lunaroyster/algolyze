@@ -1,6 +1,7 @@
 {
     "name": "Quicksort",
     "longName": "Quicksort",
+    "url": "Quicksort",
     "tags": ["sorting", "comparision", "recursive"],
     "description": "Quicksort is a divide-and-conquer algorithm. It picks a partition point and splits an array into two parts—greater and smaller than the pivot. It then recursively sorts the two arrays with Quicksort, yielding a final sorted array.",
     "links": [

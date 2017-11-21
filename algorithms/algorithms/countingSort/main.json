@@ -1,6 +1,7 @@
 {
     "name": "Counting Sort",
     "longName": "Counting Sort",
+    "url": "Counting-Sort",
     "tags": ["sorting", "counting", "integer"],
     "description": "Counting sort sorts objects according to small integer keys. It produces a frequency table from the input, and uses arithmetic to determine the position of elements in the output array.",
     "links": [

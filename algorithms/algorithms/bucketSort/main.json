@@ -1,6 +1,7 @@
 {
     "name": "Bucket Sort",
     "longName": "Bucket Sort | bin sort",
+    "url": "Bucket-Sort",
     "tags": ["sorting", "bucket", "divide-and-conquer", "distribution", "radix-sort", "comparision"],
     "description": "Bucket sort is a sorting algorithm that distributes the input elements into a number of buckets. Each bucket is sorted individually, either using another sorting algorithm, or by recursively applying the bucket sort algorithm.",
     "links": [

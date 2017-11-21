@@ -1,6 +1,7 @@
 {
     "name": "Insertion Sort",
     "longName": "Insertion sort",
+    "url": "Insertion-Sort",
     "tags": ["sorting", "insertion"],
     "description": "Insertion sort builds a sorted array inserting items into the right location one at a time.",
     "links": [
