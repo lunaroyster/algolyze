@@ -251,7 +251,7 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
         $scope.$digest();
         ga('send', {
             hitType: 'pageview',
-            page: `/a/${algorithm.name}`
+            page: `/a/${algorithm.url}`
         });
     };
     $scope.initialize();
