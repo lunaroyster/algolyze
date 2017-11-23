@@ -167,9 +167,9 @@ app.controller('baseController', function($scope, dataService) {
     
 });
 
-app.controller('searchController', function($scope, algorithmService, $location) {
+app.controller('searchController', function($scope, algorithmService, $location, $rootScope) {
     $scope.initialize = ()=> {
-        
+        $rootScope.title = "algolyze: Search";
     };
     $scope.initialize();
     
@@ -190,8 +190,9 @@ app.controller('searchController', function($scope, algorithmService, $location)
     // };
 });
 
-app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection, $location) {
+app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection, $location, $rootScope) {
     $scope.initialize = async()=> {
+        $rootScope.title = "algolyze: Tags";
         $scope.algorithmCollection = new AlgorithmCollection(await algorithmService.getAlgorithms());
         $scope.tags = $scope.algorithmCollection.getCountedTags();
         $scope.reset();
@@ -244,10 +245,12 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
     $scope.initialize();
 });
 
-app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService) {
+app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService, $rootScope) {
     $scope.initialize = async()=> {
         let algorithm = await algorithmService.getAlgorithmByURL($routeParams.algorithm);
+        $rootScope.title = `algolyze: ${algorithm.name}`;
         $scope.algorithm = algorithm;
+        $rootScope.$digest();
         $scope.$digest();
         ga('send', {
             hitType: 'pageview',
