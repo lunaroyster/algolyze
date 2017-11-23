@@ -169,7 +169,8 @@ app.controller('baseController', function($scope, dataService) {
 
 app.controller('searchController', function($scope, algorithmService, $location, $rootScope) {
     $scope.initialize = ()=> {
-        $rootScope.title = "algolyze: Search";
+        // $rootScope.title = "algolyze: Search";
+        $rootScope.title = undefined;
     };
     $scope.initialize();
     

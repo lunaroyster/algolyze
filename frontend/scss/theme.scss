@@ -25,8 +25,7 @@ $highlight: #009688;
 $primary: $light;
 $body-bg: $light;
 
-$navbar-dark-toggler-icon-bg: $light;
-$navbar-light-toggler-icon-bg: $light;
+// $navbar-dark-color: $light;
 
 // $enable-rounded: false;
 $enable-shadows: true;
@@ -255,10 +254,6 @@ nav {
         padding: 1em 3em 1em 3em;
         opacity: 0.8;
     }
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: white !important;
 }
         
 @import "node_modules/bootstrap/scss/bootstrap";
