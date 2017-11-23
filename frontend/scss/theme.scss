@@ -25,6 +25,8 @@ $highlight: #009688;
 $primary: $light;
 $body-bg: $light;
 
+$jumbotron-bg: $l1;
+
 // $navbar-dark-color: $light;
 
 // $enable-rounded: false;
@@ -54,6 +56,15 @@ body {
 }
 ::-webkit-scrollbar-thumb {
     background: $d2;
+}
+
+a.disableAnchorStyle {
+    background: inherit;
+    color: inherit;
+    &:hover {
+        color: inherit;
+        text-decoration: inherit;
+    }
 }
 
 .navPadding {

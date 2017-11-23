@@ -6,8 +6,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $routeProvider
     
     .when('/', {
-        controller  : 'searchController',
-        templateUrl : './views/search.html'
+        controller  : 'homeController',
+        templateUrl : './views/home.html'
     })
     
     .when('/a/:algorithm', {
@@ -167,7 +167,7 @@ app.controller('baseController', function($scope, dataService) {
     
 });
 
-app.controller('searchController', function($scope, algorithmService, $location, $rootScope) {
+app.controller('homeController', function($scope, algorithmService, $location, $rootScope) {
     $scope.initialize = ()=> {
         // $rootScope.title = "algolyze: Search";
         $rootScope.title = undefined;
