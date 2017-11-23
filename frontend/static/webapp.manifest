@@ -7,6 +7,10 @@
   "theme_color": "#000000",
   "description": "A searchable database of algorithms",
   "icons": [{
+    "src": "favicon/algolyze-512x512.png",
+    "sizes": "256x256",
+    "type": "image/png"
+  }, {
     "src": "favicon/algolyze-256x256.png",
     "sizes": "256x256",
     "type": "image/png"

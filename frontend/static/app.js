@@ -6,8 +6,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $routeProvider
     
     .when('/', {
-        controller  : 'searchController',
-        templateUrl : './views/search.html'
+        controller  : 'homeController',
+        templateUrl : './views/home.html'
     })
     
     .when('/a/:algorithm', {
@@ -18,6 +18,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     .when('/tags', {
         controller  : 'tagsController',
         templateUrl : './views/tags.html'
+    })
+    
+    .when('/list', {
+        controller  : 'listController',
+        templateUrl : './views/list.html'
     })
     
     .otherwise({
@@ -167,9 +172,10 @@ app.controller('baseController', function($scope, dataService) {
     
 });
 
-app.controller('searchController', function($scope, algorithmService, $location) {
+app.controller('homeController', function($scope, algorithmService, $location, $rootScope) {
     $scope.initialize = ()=> {
-        
+        // $rootScope.title = "algolyze: Search";
+        $rootScope.title = undefined;
     };
     $scope.initialize();
     
@@ -190,8 +196,9 @@ app.controller('searchController', function($scope, algorithmService, $location)
     // };
 });
 
-app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection, $location) {
+app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection, $location, $rootScope) {
     $scope.initialize = async()=> {
+        $rootScope.title = "algolyze: Tags";
         $scope.algorithmCollection = new AlgorithmCollection(await algorithmService.getAlgorithms());
         $scope.tags = $scope.algorithmCollection.getCountedTags();
         $scope.reset();
@@ -244,10 +251,22 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
     $scope.initialize();
 });
 
-app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService) {
+app.controller('listController', function($scope, algorithmService, $rootScope) {
+    $scope.initialize = async()=> {
+        $rootScope.title = "algolyze: Tags";
+        $scope.algorithms = await algorithmService.getAlgorithms();
+        $scope.$digest();
+    };
+    
+    $scope.initialize();
+});
+
+app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService, $rootScope) {
     $scope.initialize = async()=> {
         let algorithm = await algorithmService.getAlgorithmByURL($routeParams.algorithm);
+        $rootScope.title = `algolyze: ${algorithm.name}`;
         $scope.algorithm = algorithm;
+        $rootScope.$digest();
         $scope.$digest();
         ga('send', {
             hitType: 'pageview',

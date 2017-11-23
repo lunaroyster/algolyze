@@ -1,10 +1,10 @@
-<html>
+<html ng-app="algolyze">
     <head>
         <!--Meta-->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta description="A searchable database of algorithms.">
-        <title>algolyze</title>
+        <title ng-bind="title||'algolyze—A searchable database of algorithms'">algolyze—A searchable database of algorithms</title>
         
         <link rel="manifest" href="webapp.manifest">
         <link rel="icon" href="favicon/algolyze-32x32-transparent.png">
@@ -61,7 +61,7 @@
         
         </script>
     </head>
-    <body ng-app="algolyze" >
+    <body>
         <div ng-controller="baseController">
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark py-3" id="mainNav">
                 <a href="#" class="navbar-brand">algolyze</a>
