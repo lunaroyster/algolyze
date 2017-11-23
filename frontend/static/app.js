@@ -169,7 +169,13 @@ app.factory('algorithmService', function(dataService, $q) {
 });
 
 app.controller('baseController', function($scope, dataService) {
-    
+    $scope.outboundClick = (event)=> {
+        ga('send', 'event', {
+            eventCategory: 'Outbound Link',
+            eventAction: 'click',
+            eventLabel: event.target.href
+        });
+    };
 });
 
 app.controller('homeController', function($scope, algorithmService, $location, $rootScope) {
@@ -253,9 +259,13 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
 
 app.controller('listController', function($scope, algorithmService, $rootScope) {
     $scope.initialize = async()=> {
-        $rootScope.title = "algolyze: Tags";
+        $rootScope.title = "algolyze: List";
         $scope.algorithms = await algorithmService.getAlgorithms();
         $scope.$digest();
+        ga('send', {
+            hitType: 'pageview',
+            page: `/list`
+        });
     };
     
     $scope.initialize();
@@ -277,6 +287,11 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
     
     $scope.viewExternalLink = (link)=> {
         $window.open(link.url, "_blank");
+        ga('send', 'event', {
+            eventCategory: 'Outbound Link',
+            eventAction: 'click',
+            eventLabel: link
+        });
     };
     
     $scope.noPageMarkdown = "##This algorithm doesn't seem to have a page. \n\nCreate a page.";
