@@ -20,6 +20,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl : './views/tags.html'
     })
     
+    .when('/list', {
+        controller  : 'listController',
+        templateUrl : './views/list.html'
+    })
+    
     .otherwise({
         controller  : '404Controller',
         templateUrl : './views/404.html'
@@ -241,6 +246,16 @@ app.controller('tagsController', function($scope, algorithmService, AlgorithmCol
     };
     $scope.viewAlgorithm = (algorithm)=> {
         $location.path(`/a/${algorithm.url}`);
+    };
+    
+    $scope.initialize();
+});
+
+app.controller('listController', function($scope, algorithmService, $rootScope) {
+    $scope.initialize = async()=> {
+        $rootScope.title = "algolyze: Tags";
+        $scope.algorithms = await algorithmService.getAlgorithms();
+        $scope.$digest();
     };
     
     $scope.initialize();

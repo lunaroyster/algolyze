@@ -25,6 +25,8 @@ $highlight: #009688;
 $primary: $light;
 $body-bg: $light;
 
+$list-group-bg: transparent;
+
 $jumbotron-bg: $l1;
 
 // $navbar-dark-color: $light;
@@ -238,6 +240,21 @@ nav {
             }
             &:hover {
                 border-bottom: 2px dashed $l2;
+            }
+        }
+    }
+}
+
+#listView {
+    #listInfo {
+        background-color: $d0;
+        color: $l0;
+    }
+    ul {
+        a.algorithm {
+            transition: 0.2s all;
+            &:hover {
+                background: $l2;
             }
         }
     }
