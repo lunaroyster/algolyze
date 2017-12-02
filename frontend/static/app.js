@@ -103,7 +103,7 @@ app.service('AlgorithmCollection', function() {
    return AlgorithmCollection;
 });
 
-app.factory('algorithmService', function(dataService, $q) {
+app.factory('algorithmService', function(dataService, AlgorithmCollection, $q) {
     var algorithmService = {};
     var algorithmList = undefined;
     
@@ -112,15 +112,75 @@ app.factory('algorithmService', function(dataService, $q) {
         algorithmList = await dataService.fetchAlgorithms();
         return algorithmList;
     };
-    
     var getAlgorithm = async function(name) {
         let algorithms = await getAlgorithms();
         return algorithms.filter((item)=>{return item.name==name})[0];
     };
-    
     var getAlgorithmByURL = async function(url) {
         let algorithms = await getAlgorithms();
         return algorithms.filter((item)=>{return item.url==url})[0];
+    };
+    
+    var getAlgorithmMasterCollection = async function() {
+        return new AlgorithmCollection(await getAlgorithms());
+    };
+    
+    var getGlobalTagList = async()=> {
+        return Object.getOwnPropertyNames((await getAlgorithmMasterCollection()).getTagCollection());
+    };
+    var getAlgorithmTagVectors = async()=> {
+        let algTagVectors = {};
+        let algorithms = await getAlgorithms();
+        let globalTagList = await getGlobalTagList();
+        for(let algorithm of algorithms) {
+            let tagList = [];
+            for(let tag of globalTagList) {
+                if(algorithm.tags.indexOf(tag)!=-1) {
+                    tagList.push(1);
+                }
+                else {
+                    tagList.push(0);
+                }
+            }
+            algTagVectors[algorithm.name] = tagList;
+        }
+        return algTagVectors;
+    };
+    var getSimilarAlgorithms = async(name)=> {
+        let algorithmTagVectors = await getAlgorithmTagVectors();
+        let algorithms = await getAlgorithms();
+        let contextAlg = await getAlgorithm(name);
+        var cosineSimilarity = (A, B)=> {
+            let dotProduct = (a, b)=> {
+                if(a.length!=b.length) throw Error("Bad vector");
+                let sum = 0;
+                for(let i = 0; i<a.length; i++) {
+                    sum+=(a[i]*b[i]);
+                }
+                return sum;
+            };
+            let magnitude = (a)=> {
+                let squareSum = 0;
+                for(let i of a) {
+                    squareSum+=i**2;
+                }
+                return squareSum**0.5
+            };
+            let AdotB = dotProduct(A, B);
+            let Amag = magnitude(A);
+            let Bmag = magnitude(B);
+            return AdotB/(Amag*Bmag);
+        };
+        let similarities = {};
+        for(let algorithmTagVector in algorithmTagVectors) {
+            if(name==algorithmTagVector) continue;
+            similarities[algorithmTagVector] = (cosineSimilarity(algorithmTagVectors[name], algorithmTagVectors[algorithmTagVector]))
+        }
+        return similarities;
+    }
+    
+    var fuzzySearch = function(term) {
+        return algorithmService.fuse.search(term);
     };
     
     var initialize = async()=> {
@@ -151,20 +211,18 @@ app.factory('algorithmService', function(dataService, $q) {
                 }
             ]
         };
-        let algorithmList = await getAlgorithms()
+        let algorithmList = await getAlgorithms();
         var fuse = new Fuse(algorithmList, fuseOptions);
         algorithmService.fuse = fuse;
     };
     initialize();
     
-    var fuzzySearch = function(term) {
-        return algorithmService.fuse.search(term);
-    };
-    
     algorithmService.getAlgorithms = getAlgorithms;
     algorithmService.getAlgorithm = getAlgorithm;
     algorithmService.getAlgorithmByURL = getAlgorithmByURL;
     algorithmService.fuzzySearch = fuzzySearch;
+    algorithmService.getAlgorithmMasterCollection = getAlgorithmMasterCollection;
+    algorithmService.getSimilarAlgorithms = getSimilarAlgorithms;
     return algorithmService;
 });
 
@@ -202,12 +260,18 @@ app.controller('homeController', function($scope, algorithmService, $location, $
     // };
 });
 
-app.controller('tagsController', function($scope, algorithmService, AlgorithmCollection, $location, $rootScope) {
+app.controller('tagsController', function($scope, algorithmService, $location, $rootScope) {
     $scope.initialize = async()=> {
         $rootScope.title = "algolyze: Tags";
-        $scope.algorithmCollection = new AlgorithmCollection(await algorithmService.getAlgorithms());
+        $scope.algorithmCollection = await algorithmService.getAlgorithmMasterCollection();
         $scope.tags = $scope.algorithmCollection.getCountedTags();
         $scope.reset();
+        let tagName = $location.search().tag;
+        if(tagName) {
+            let tag = $scope.tags.find((t)=>t.name==tagName);
+            if(!tag) return;
+            $scope.selectTag(tag, true);
+        }
         $scope.$digest();
         ga('send', {
             hitType: 'pageview',
@@ -274,6 +338,8 @@ app.controller('listController', function($scope, algorithmService, $rootScope) 
 app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService, $rootScope) {
     $scope.initialize = async()=> {
         let algorithm = await algorithmService.getAlgorithmByURL($routeParams.algorithm);
+        let similarAlgorithms = await algorithmService.getSimilarAlgorithms(algorithm.name);
+        $scope.similarAlgorithms = (Object.keys(similarAlgorithms).sort((a,b)=> {return similarAlgorithms[b]-similarAlgorithms[a]}));
         $rootScope.title = `algolyze: ${algorithm.name}`;
         $scope.algorithm = algorithm;
         $rootScope.$digest();
@@ -282,6 +348,7 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
             hitType: 'pageview',
             page: `/a/${algorithm.url}`
         });
+        
     };
     $scope.initialize();
     
@@ -293,7 +360,14 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
             eventLabel: link
         });
     };
-    
+    $scope.viewAlgorithm = async(algorithmName)=> {
+        let algorithm = await algorithmService.getAlgorithm(algorithmName)
+        $location.path(`/a/${algorithm.url}`);
+        $rootScope.$digest();
+    };
+    $scope.viewTag = (tagName)=> {
+        $location.path(`/tags`).search('tag', tagName);
+    }
     $scope.noPageMarkdown = "##This algorithm doesn't seem to have a page. \n\nCreate a page.";
     
     $scope.longDescriptionAsHTML = markdownService.returnMarkdownAsTrustedHTML;
