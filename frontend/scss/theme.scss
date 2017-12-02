@@ -69,6 +69,10 @@ a.disableAnchorStyle {
     }
 }
 
+.widthScrollContainer {
+    overflow: hidden;
+}
+
 .navPadding {
     height: 4.5em;
 }
@@ -158,7 +162,7 @@ nav {
             padding-bottom: 10px;
         }
         .tags {
-            padding-bottom: 1em;
+            padding-bottom: 10px;
             .tag {
                 @include tag;
                 background: $d1;
@@ -171,6 +175,18 @@ nav {
             font-size: larger;
             font-family: 'Open Sans';
             background: $d2;
+        }
+        .similarAlgorithms {
+            min-width: max-content;
+            .similarAlgorithm {
+                display: inline-flex;
+                padding: 1em;
+                background: $d1;
+                color: $l7;
+                &:hover {
+                    background: $d2;
+                }
+            }
         }
     }
 }

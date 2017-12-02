@@ -222,6 +222,7 @@ app.factory('algorithmService', function(dataService, AlgorithmCollection, $q) {
     algorithmService.getAlgorithmByURL = getAlgorithmByURL;
     algorithmService.fuzzySearch = fuzzySearch;
     algorithmService.getAlgorithmMasterCollection = getAlgorithmMasterCollection;
+    algorithmService.getSimilarAlgorithms = getSimilarAlgorithms;
     return algorithmService;
 });
 
@@ -331,6 +332,8 @@ app.controller('listController', function($scope, algorithmService, $rootScope) 
 app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService, $rootScope) {
     $scope.initialize = async()=> {
         let algorithm = await algorithmService.getAlgorithmByURL($routeParams.algorithm);
+        let similarAlgorithms = await algorithmService.getSimilarAlgorithms(algorithm.name);
+        $scope.similarAlgorithms = (Object.keys(similarAlgorithms).sort((a,b)=> {return similarAlgorithms[b]-similarAlgorithms[a]}));
         $rootScope.title = `algolyze: ${algorithm.name}`;
         $scope.algorithm = algorithm;
         $rootScope.$digest();
@@ -339,6 +342,7 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
             hitType: 'pageview',
             page: `/a/${algorithm.url}`
         });
+        
     };
     $scope.initialize();
     
@@ -349,6 +353,11 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
             eventAction: 'click',
             eventLabel: link
         });
+    };
+    $scope.viewAlgorithm = async(algorithmName)=> {
+        let algorithm = await algorithmService.getAlgorithm(algorithmName)
+        $location.path(`/a/${algorithm.url}`);
+        $rootScope.$digest();
     };
     
     $scope.noPageMarkdown = "##This algorithm doesn't seem to have a page. \n\nCreate a page.";

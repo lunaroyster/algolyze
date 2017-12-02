@@ -8,6 +8,11 @@
                 <span class="tag" ng-repeat="tag in algorithm.tags" ng-bind="tag"></span>
             </div>
             <div class="description" ng-bind="algorithm.description"></div>
+            <div class="widthScrollContainer">
+                <div class="similarAlgorithms">
+                    <div class="similarAlgorithm" ng-repeat="similarAlgorithm in similarAlgorithms" ng-bind="similarAlgorithm" ng-click="viewAlgorithm(similarAlgorithm)"></div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="body">
