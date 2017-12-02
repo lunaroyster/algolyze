@@ -266,6 +266,12 @@ app.controller('tagsController', function($scope, algorithmService, $location, $
         $scope.algorithmCollection = await algorithmService.getAlgorithmMasterCollection();
         $scope.tags = $scope.algorithmCollection.getCountedTags();
         $scope.reset();
+        let tagName = $location.search().tag;
+        if(tagName) {
+            let tag = $scope.tags.find((t)=>t.name==tagName);
+            if(!tag) return;
+            $scope.selectTag(tag, true);
+        }
         $scope.$digest();
         ga('send', {
             hitType: 'pageview',
@@ -359,7 +365,9 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
         $location.path(`/a/${algorithm.url}`);
         $rootScope.$digest();
     };
-    
+    $scope.viewTag = (tagName)=> {
+        $location.path(`/tags`).search('tag', tagName);
+    }
     $scope.noPageMarkdown = "##This algorithm doesn't seem to have a page. \n\nCreate a page.";
     
     $scope.longDescriptionAsHTML = markdownService.returnMarkdownAsTrustedHTML;
