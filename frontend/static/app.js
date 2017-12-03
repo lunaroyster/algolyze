@@ -342,6 +342,7 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
         $scope.similarAlgorithms = (Object.keys(similarAlgorithms).sort((a,b)=> {return similarAlgorithms[b]-similarAlgorithms[a]}));
         $rootScope.title = `algolyze: ${algorithm.name}`;
         $scope.algorithm = algorithm;
+        $(".similarAlgorithms").draggable({ axis: "x"});
         $rootScope.$digest();
         $scope.$digest();
         ga('send', {
