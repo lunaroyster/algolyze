@@ -42,6 +42,16 @@ $enable-shadows: true;
     font-weight: 100;
 }
 
+@mixin darkTag {
+    background: $d1;
+    color: $l7;
+    transition: 0.2s all;
+    cursor: pointer;
+    &:hover {
+        background: $d2;
+    }
+}
+
 body {
     margin: 0;
     overflow-y: scroll;
@@ -165,12 +175,12 @@ nav {
             padding-bottom: 10px;
             .tag {
                 @include tag;
-                background: $d1;
-                color: $l7;
+                @include darkTag;
             }
         }
         .description {
             padding: 1em;
+            // margin-bottom: 10px;
             color: white;
             font-size: larger;
             font-family: 'Open Sans';
@@ -180,12 +190,11 @@ nav {
             min-width: max-content;
             .similarAlgorithm {
                 display: inline-flex;
-                padding: 1em;
-                background: $d1;
-                color: $l7;
-                &:hover {
-                    background: $d2;
-                }
+                padding: 0.8em;
+                font-size: smaller;
+                // margin-right: 10px;
+                border-bottom: 5px solid;
+                @include darkTag;
             }
         }
     }

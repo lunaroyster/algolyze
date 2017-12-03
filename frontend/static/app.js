@@ -338,10 +338,11 @@ app.controller('listController', function($scope, algorithmService, $rootScope) 
 app.controller('algorithmPageController', function($scope, $window, algorithmService, $location, $routeParams, markdownService, $rootScope) {
     $scope.initialize = async()=> {
         let algorithm = await algorithmService.getAlgorithmByURL($routeParams.algorithm);
-        let similarAlgorithms = await algorithmService.getSimilarAlgorithms(algorithm.name);
-        $scope.similarAlgorithms = (Object.keys(similarAlgorithms).sort((a,b)=> {return similarAlgorithms[b]-similarAlgorithms[a]}));
+        $scope.similarAlgorithms = await algorithmService.getSimilarAlgorithms(algorithm.name);
+        $scope.similarAlgorithmNames = (Object.keys($scope.similarAlgorithms).sort((a,b)=> {return $scope.similarAlgorithms[b]-$scope.similarAlgorithms[a]}));
         $rootScope.title = `algolyze: ${algorithm.name}`;
         $scope.algorithm = algorithm;
+        $(".similarAlgorithms").draggable({ axis: "x"});
         $rootScope.$digest();
         $scope.$digest();
         ga('send', {
@@ -351,6 +352,10 @@ app.controller('algorithmPageController', function($scope, $window, algorithmSer
         
     };
     $scope.initialize();
+    
+    $scope.getAlgorithmStyle = (name)=> {
+        return {"border-color": `rgba(255, 255, 255, ${$scope.similarAlgorithms[name]}`};
+    }
     
     $scope.viewExternalLink = (link)=> {
         $window.open(link.url, "_blank");
