@@ -181,19 +181,21 @@ nav {
         .description {
             padding: 1em;
             // margin-bottom: 10px;
-            color: white;
+            color: $l5;
             font-size: larger;
             font-family: 'Open Sans';
-            background: $d2;
+            background: $d1;
         }
         .similarAlgorithms {
             min-width: max-content;
             .similarAlgorithm {
+                margin-top: 0.5em;
+                margin-right: 0.5em;
                 display: inline-flex;
                 padding: 0.8em;
                 font-size: smaller;
                 // margin-right: 10px;
-                border-bottom: 5px solid;
+                border-left: 2px solid;
                 @include darkTag;
             }
         }
