@@ -1,0 +1,14 @@
+{
+    "name": "Kruskal's Algorithm",
+    "longName": "Kruskal's algorithm",
+    "url": "Kruskal's-Algorithm",
+    "tags": ["pathfinding", "graph search", "minimum spanning tree", "greedy algorithm"],
+    "description": "Kruskal's algorithm finds an edge of the least possible weight that connect two nodes in a graph, generating a minimum spanning tree.",
+    "links": [
+        {
+            "name": "Wikipedia—Kruskal's algorithm",
+            "url": "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
+}
