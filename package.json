@@ -6,7 +6,8 @@
   "scripts": {
     "test": "istanbul cover ./bin/test.js",
     "verify": "node ./bin/verify.js",
-    "dist": "node ./bin/dist.js"
+    "dist": "node ./bin/dist.js",
+    "serve": "static ./dist --spa -a 0.0.0.0"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "grunt-contrib-jshint": "^1.1.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
+    "node-static": "^0.7.10",
     "seedrandom": "^2.4.3"
   }
 }
