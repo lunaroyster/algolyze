@@ -30,10 +30,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl : './views/404.html'
     });
     
-    // $locationProvider.html5Mode({
-    //     enabled: true,
-    //     requireBase: true
-    // });
+    $locationProvider.html5Mode({
+        enabled: true,
+        hashPrefix: ''
+    });
 }]);
 
 app.service('dataService', function($http) {
