@@ -27,7 +27,7 @@ module.exports = (async function() {
     
     await fse.copy(`${dir}/algorithms`, `${dir}/generated/algorithms`, {overwrite: false});
     
-    let sitemap = sm.createSitemap({hostname: 'https://algolyze.me/#!/a', urls: algorithmURLs});
+    let sitemap = sm.createSitemap({hostname: 'https://algolyze.me/a', urls: algorithmURLs});
     await fse.writeFile(`${dir}/generated/sitemaps/algorithms.xml`, sitemap.toXML(), 'utf8');
     
     console.log("Compiled data.");
