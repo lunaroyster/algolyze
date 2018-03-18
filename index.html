@@ -1,0 +1,94 @@
+<html ng-app="algolyze">
+    <head>
+        <!--Meta-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta description="A searchable database of algorithms.">
+        <title ng-bind="title||'algolyze—A searchable database of algorithms'">algolyze—A searchable database of algorithms</title>
+        
+        <link rel="manifest" href="webapp.manifest">
+        <link rel="icon" href="favicon/algolyze-32x32-transparent.png">
+        <base href="/">
+        
+        <meta property="og:title" content="algolyze">
+        <meta property="og:site_name" content="algolyze">
+        <meta property="og:description" content="A searchable database of algorithms.">
+        <meta property="og:image" content="https://algolyze.me/favicon/algolyze-512x512.png">
+        <meta property="og:url" content="https://algolyze.me">
+        
+        <meta name="theme-color" content="#000000">
+        
+        <!--Stylesheet Libraries and fonts-->
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!--Javascript Libraries-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.1.0/fuse.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+        <!--Resources-->
+        <script src="app41.js"></script>
+        <link rel="stylesheet" href="css/theme.css" type="text/css" />
+        
+        
+        <!--Google Adsense-->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-2087371384441833",
+            enable_page_level_ads: true
+          });
+        </script>
+        
+        <!--Google Analytics-->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+            ga('create', 'UA-109825707-1', 'auto'); 
+            ga('send', 'pageview');
+        
+        </script>
+    </head>
+    <body>
+        <div ng-controller="baseController">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark py-3" id="mainNav">
+                <a href="#" class="navbar-brand">algolyze</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <a id="gh" class="mx-2 navbar-brand" href="https://github.com/lunaroyster/algolyze" target="_blank" ng-click="outboundClick(event)" data-toggle="tooltip" data-placement="bottom" title="Contribute to lunaroyster/algolyze"><img src="images/GitHub-Mark-Light-120px-plus.png" height="30px"></a>
+                    <script>$('#gh').tooltip()</script>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Fuzzy Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tags">Find By Tags</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/list">List algorithms</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="mainbox">
+                <div ng-view></div>
+            </div>
+        </div>
+    </body>
+</html>

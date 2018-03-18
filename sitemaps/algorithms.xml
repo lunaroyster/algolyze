@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://algolyze.me/a/A*</loc> </url>
+<url> <loc>https://algolyze.me/a/Bellman–Ford-algorithm</loc> </url>
+<url> <loc>https://algolyze.me/a/Best-first-Search</loc> </url>
+<url> <loc>https://algolyze.me/a/Binary-Search</loc> </url>
+<url> <loc>https://algolyze.me/a/Boyer-Moore-string-search</loc> </url>
+<url> <loc>https://algolyze.me/a/Bubble-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Bucket-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Comb-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Counting-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Cycle-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Dijkstra&#039;s-Algorithm</loc> </url>
+<url> <loc>https://algolyze.me/a/Exponential-Search</loc> </url>
+<url> <loc>https://algolyze.me/a/Fibonacci-Search</loc> </url>
+<url> <loc>https://algolyze.me/a/Heapsort</loc> </url>
+<url> <loc>https://algolyze.me/a/Insertion-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Interpolation-Search</loc> </url>
+<url> <loc>https://algolyze.me/a/Jump-Search</loc> </url>
+<url> <loc>https://algolyze.me/a/Kruskal&#039;s-Algorithm</loc> </url>
+<url> <loc>https://algolyze.me/a/Linear-Search</loc> </url>
+<url> <loc>https://algolyze.me/a/Merge-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Quicksort</loc> </url>
+<url> <loc>https://algolyze.me/a/Radix-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Selection-Sort</loc> </url>
+<url> <loc>https://algolyze.me/a/Shellsort</loc> </url>
+</urlset>

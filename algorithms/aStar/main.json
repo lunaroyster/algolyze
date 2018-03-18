@@ -1,0 +1,14 @@
+{
+    "name": "A*",
+    "longName": "A* | A Star",
+    "url": "A*",
+    "tags": ["pathfinding", "graph search", "graph traversal"],
+    "description": "A* is a pathfinding algorithm that's used to plot an efficiently directed path between multiple points, using heuristics to guide its search and attain a better performance.",
+    "links": [
+        {
+            "name": "Wikipedia—A* search algorithm",
+            "url": "https://en.wikipedia.org/wiki/A*_search_algorithm",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
+}

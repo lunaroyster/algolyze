@@ -1,0 +1,14 @@
+{
+    "name": "Binary Search",
+    "longName": "Binary search/half-interval search/logarithmic search/binary chop",
+    "url": "Binary-Search",
+    "tags": ["search", "logarithmic", "sorted search"],
+    "description": "Binary search works on sorted arrays. Binary search begins by comparing the middle element of the array with the target value. If the target value matches the middle element, its position in the array is returned. If the target value is less than or greater than the middle element, the search continues in the lower or upper half of the array, respectively, eliminating the other half from consideration",
+    "links": [
+        {
+            "name": "Wikipedia—Binary search algorithm",
+            "url": "https://en.wikipedia.org/wiki/Binary_search_algorithm",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Fibonacci Search",
+    "longName": "Fibonacci Search",
+    "url": "Fibonacci-Search",
+    "tags": ["search", "fibonacci", "sorted search"],
+    "description": "Fibonacci search works on sorted arrays with the aid of Fibonacci numbers. It divides the array into two parts that have sizes that are consecutive Fibonacci numbers.",
+    "links": [
+        {
+            "name": "Wikipedia—Fibonacci_search_technique",
+            "url": "https://en.wikipedia.org/wiki/Fibonacci_search_technique",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
+}

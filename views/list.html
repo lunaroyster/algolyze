@@ -1,0 +1,18 @@
+<div id="listView">
+    <div class="navPadding"></div>
+    <section id="listInfo" class="py-4">
+        <div class="container">
+            <h1>List</h1>
+            <p>A list of algorithms on algolyze.</p>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container">
+            <div class="card" style="background-color: transparent;">
+                <ul class="list-group list-group-flush">
+                    <a class="list-group-item disableAnchorStyle algorithm" ng-repeat="algorithm in algorithms" ng-bind="algorithm.name" ng-href="/a/{{algorithm.url}}"></a>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

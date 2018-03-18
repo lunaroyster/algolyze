@@ -1,0 +1,14 @@
+{
+    "name": "Bubble Sort",
+    "longName": "Bubble Sort/Sinking Sort",
+    "url": "Bubble-Sort",
+    "tags": ["sorting", "comparision", "bubble"],
+    "description": "Bubblesort steps through an array comparing adjacent items, and swaps them if they are in the wrong order. It does this repeatedly until the array is sorted.",
+    "links": [
+        {
+            "name": "Wikipedia—Bubble sort",
+            "url": "https://en.wikipedia.org/wiki/Bubble_sort",
+            "img": "images/Wikipedia's_W.svg"
+        }
+    ]
+}
