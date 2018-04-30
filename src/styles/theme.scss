@@ -1,0 +1,19 @@
+$dark: #111111;
+$d0: $dark;
+$d1: lighten($dark, 5%);
+$d2: lighten($dark, 10%);
+$d3: lighten($dark, 15%);
+$d4: lighten($dark, 20%);
+$d5: lighten($dark, 25%);
+$d6: lighten($dark, 30%);
+$d7: lighten($dark, 35%);
+
+$light: #eeeeee;
+$l0: $light;
+$l1: darken($light, 5%);
+$l2: darken($light, 10%);
+$l3: darken($light, 15%);
+$l4: darken($light, 20%);
+$l5: darken($light, 25%);
+$l6: darken($light, 30%);
+$l7: darken($light, 35%);

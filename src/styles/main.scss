@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100,300');
+@import './theme';
+
+
+// Bootstrap Material Design default colors (these can be override by user)
+// $theme-colors: () !default;
+// $theme-colors: map-merge((
+//   primary: $teal,
+//   success: $green,
+//   info: $light-blue,
+//   warning: $deep-orange,
+//   danger: $red,
+//   light: $grey-100,
+//   dark: #000000
+// ), $theme-colors);
+
+$highlight: #009688;
+
+$primary: $light;
+$body-bg: $light;
+$dark: #000000;
+
+a.disableAnchorStyle {
+    background: inherit;
+    color: inherit;
+    &:hover {
+        color: inherit;
+        text-decoration: inherit;
+    }
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+}
+
+@import 'bootstrap-material-design/scss/bootstrap-material-design';
+
+// $mdc-theme-primary: #212121;
+// $mdc-theme-primary: #000000;
+// $mdc-theme-on-primary: #000000;
+// $mdc-theme-accent: #41b883;
+// $mdc-theme-background: #212121;
+
+// @import 'vue-mdc-adapter/dist/styles';
