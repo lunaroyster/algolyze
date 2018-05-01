@@ -1,0 +1,10 @@
+@import './theme';
+
+@mixin tag {
+    padding: 0.5em;
+    margin-right: 10px;
+    display: inline-flex;
+    font-size: 80%;
+    align-items: center;
+    font-weight: 100;
+}
