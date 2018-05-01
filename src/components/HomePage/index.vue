@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../styles/theme';
+@import '../../styles/shared';
 
 #searchPanel {
   padding-top: 4em;
