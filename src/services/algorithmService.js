@@ -101,6 +101,7 @@ class AlgorithmService {
     return similarities;
   }
   fuzzySearch(term) {
+    if (!this.fuse) return [];
     return this.fuse.search(term);
   }
 }
