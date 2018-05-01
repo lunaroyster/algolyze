@@ -17,12 +17,10 @@ export default {
     result: Object,  
   },
   data() {
-    return {
-        
-    };
+    return {};
   },
   computed: {
-    AlgorithmPageURL(url) {
+    AlgorithmPageURL() {
       return(`/a/${this.result.item.url}`);
     },
   },
