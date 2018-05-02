@@ -8,3 +8,13 @@
     align-items: center;
     font-weight: 100;
 }
+
+@mixin darkTag {
+    background: $d1;
+    color: $l7;
+    transition: 0.2s all;
+    cursor: pointer;
+    &:hover {
+        background: $d2;
+    }
+}
