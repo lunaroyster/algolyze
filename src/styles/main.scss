@@ -20,6 +20,30 @@ a.disableAnchorStyle {
     overflow: hidden;
 }
 
+.markdowned {
+    ul {
+        padding-left: 2em !important;
+        li {
+            list-style-type: circle;
+        }
+    }
+    strong {
+        font-weight: bolder;
+    }
+    a {
+        text-decoration: none;
+        color: $highlight;
+    }
+    code {
+        display: block;
+        background: $l1;
+        font-family: consolas;
+        font-weight: 100;
+        padding: 1em 3em 1em 3em;
+        opacity: 0.8;
+    }
+}
+
 * {
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
