@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark py-3" id="mainNav">
-    <a href="#" class="navbar-brand">algolyze</a>
+    <router-link to="/" class="navbar-brand">algolyze</router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,13 +9,13 @@
       <!--<script>$('#gh').tooltip()</script>-->
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#!/">Fuzzy Search</a>
+          <router-link class="nav-link" to="/">Fuzzy Search</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#!/tags">Find By Tags</a>
+          <router-link class="nav-link" to="/tags">Find By Tags</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#!/list">List algorithms</a>
+          <router-link class="nav-link" to="/list">List algorithms</router-link>
         </li>
       </ul>
     </div>
