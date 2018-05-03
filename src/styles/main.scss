@@ -37,7 +37,7 @@ a.disableAnchorStyle {
     code {
         display: block;
         background: $l1;
-        font-family: consolas;
+        font-family: SourceCodeProRegular;
         font-weight: 100;
         padding: 1em 3em 1em 3em;
         opacity: 0.8;
@@ -45,8 +45,21 @@ a.disableAnchorStyle {
 }
 
 * {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'GothamBook', sans-serif;
     font-weight: 100;
+}
+@font-face {
+    font-family: SourceCodeProRegular;
+    src: url('/static/fonts/SourceCodePro-Regular.otf.woff');
+}
+@font-face {
+    font-family: SourceCodeProLight;
+    src: url('/static/fonts/SourceCodePro-Light.otf.woff');
+}
+
+@font-face {
+    font-family: GothamBook;
+    src: url('/static/fonts/GothamHTF-Book.otf');
 }
 
 @import 'bootstrap-material-design/scss/bootstrap-material-design';
